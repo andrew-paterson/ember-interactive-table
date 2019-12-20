@@ -1,0 +1,20 @@
+<div class="page-navigation">
+  {{#if paginationObject.prev}}
+    <button onclick={{action setProperty "page" paginationObject.first.number}} class="incrementing-arrow-double left-right margin-right-md btn-content" title="First">{{svg-repo/icons/icon-arrow-left-double}}</button>
+    <button onclick={{action setProperty "page" paginationObject.prev.number}} class="incrementing-arrow left-right right margin-right-md btn-content" title="Previous">{{svg-repo/icons/icon-arrow-left}}</button>
+  {{/if}}
+  <div class="page-number-input">
+    Page {{input value=(readonly paginationObject.self.number) change=(action (action setProperty "page") value="target.value")}} of {{paginationObject.last.number}}
+  </div>
+  {{#if paginationObject.next}}
+    <button onclick={{action setProperty "page" paginationObject.next.number}} class="incrementing-arrow left-right margin-left-md btn-content" title="Next">{{svg-repo/icons/icon-arrow-right}}</button>
+    <button onclick={{action setProperty "page" paginationObject.last.number}} class="incrementing-arrow-double left-right margin-left-md btn-content" title="Last">{{svg-repo/icons/icon-arrow-right-double}}</button>
+  {{/if}}
+</div>
+<div class="page-size">
+  <div class="arrows">
+    <button onclick={{action setProperty "size" pageSize.nextUp}} class="incrementing-arrow up-down up btn-content" title="Next">{{svg-repo/icons/icon-arrow-up}}</button>
+    <button onclick={{action setProperty "size" pageSize.nextDown}} class="incrementing-arrow up-down down btn-content" title="Last">{{svg-repo/icons/icon-arrow-down}}</button>
+  </div>
+  <span class="page-size">{{pageSize.current}}</span> items per page
+</div>

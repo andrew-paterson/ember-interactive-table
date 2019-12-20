@@ -1,0 +1,65 @@
+{{#if (or filtersComponent filterFormSchema)}}
+  <div class="margin-bottom-lg">
+    {{#basic-dropdown verticalPosition="below" renderInPlace=true positionStatic=true initiallyOpened=filtersActive as |dropdown|}}
+      {{#dropdown.trigger}}
+        <button class="btn btn-outline-primary">
+          {{#if dropdown.isOpen}}
+            {{svg-repo/icons/icon-cross}}Hide Filters
+          {{else}}
+            {{svg-repo/icons/icon-filter}}Show Filters
+          {{/if}}
+        </button>
+      {{/dropdown.trigger}}
+      {{#dropdown.content class="filter-controls body-content position-static"}}
+        <div class="pop-up-box box-arrow">
+          {{#if filterFormSchema}}
+            {{ember-pojo-form/validating-form
+              formSchema=filterFormSchema
+              submitAction=(action applyFilters)
+              afterReset=(action clearAllFilters)
+              data=filterProps
+            }}
+          {{else}}
+            {{component filtersComponent
+              applyFilters=(action applyFilters)
+              clearAllFilters=(action clearAllFilters)
+              data=filterProps
+              filterFormSchema=filterFormSchema
+            }}
+          {{/if}}
+          {{#if filtersActive}}
+            <div class="filtering-results">
+              {{svg-repo/icons/icon-asterisk class="filters-active-icon bg-primary"}} Filters are active ({{modelMetaData.filtered_data_length}} {{ember-skeleton/custom-inflector modelMetaData.filtered_data_length singular=singleRecordName plural=pluralRecordName}} returned).
+            </div>
+          {{/if}}
+        </div>
+      {{/dropdown.content}}
+    {{/basic-dropdown}}
+  </div>
+{{/if}}
+  {{yield (hash aboveTable="blank-template")}}
+  {{#if model}}
+    {{hyrax-ember-assets/interactive-table/pagination-controls
+      modelMetaData=modelMetaData
+      paginationLinks=paginationLinks
+      setProperty=(action setProperty)
+      class="margin-bottom-lg"
+    }}
+    {{#hyrax-ember-assets/interactive-table/table-container}}
+      {{yield (hash tableComponent="blank-template")}}
+    {{/hyrax-ember-assets/interactive-table/table-container}}
+    {{hyrax-ember-assets/interactive-table/pagination-controls
+      modelMetaData=modelMetaData
+      paginationLinks=paginationLinks
+      setProperty=(action setProperty)
+      class="margin-top-lg"
+    }}
+  {{else}}
+    {{#ember-extended-elements/in-page-alert type="info" dataTestId="no-items-notice"}}
+      {{#if filtersActive}}
+        Your selected filters don"t match any {{pluralRecordName}}. Please update your filter settings, or click <b>Clear filters</b> above.
+      {{else}}
+        You have no {{pluralRecordName}} to display yet.
+      {{/if}}
+    {{/ember-extended-elements/in-page-alert}}
+  {{/if}}

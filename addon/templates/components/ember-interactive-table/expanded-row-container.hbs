@@ -1,0 +1,13 @@
+<tr class="additional-info {{oddEvenClass}}">
+  <td colspan="10">
+    <div>
+      <button class="btn-content hide-additional-info-icon hover-pointer" onclick={{action toggleExpandedRow}}>
+        {{svg-repo/icons/icon-arrow-up class="fill-gray-light"}}
+      </button>
+      {{yield}}
+      <button class="btn-content hide-details-icon close-button" onclick={{action toggleExpandedRow}}>
+        {{svg-repo/icons/icon-cross }}
+      </button>
+    </div>
+  </td>
+</tr>

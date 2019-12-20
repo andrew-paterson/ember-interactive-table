@@ -1,0 +1,6 @@
+{{yield}}
+{{#if filtersActive}}
+  <div class="filtering-results">
+    {{svg-repo/icons/icon-asterisk class="filters-active-icon"}} Filters are active ({{modelMetaData.filtered_data_length}} {{custom-inflector modelMetaData.filtered_data_length singular="item"}} returned).
+  </div>
+{{/if}}
