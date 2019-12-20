@@ -39,16 +39,16 @@
 {{/if}}
   {{yield (hash aboveTable="blank-template")}}
   {{#if model}}
-    {{hyrax-ember-assets/interactive-table/pagination-controls
+    {{ember-interactive-table/pagination-controls
       modelMetaData=modelMetaData
       paginationLinks=paginationLinks
       setProperty=(action setProperty)
       class="margin-bottom-lg"
     }}
-    {{#hyrax-ember-assets/interactive-table/table-container}}
+    {{#ember-interactive-table/table-container}}
       {{yield (hash tableComponent="blank-template")}}
-    {{/hyrax-ember-assets/interactive-table/table-container}}
-    {{hyrax-ember-assets/interactive-table/pagination-controls
+    {{/ember-interactive-table/table-container}}
+    {{ember-interactive-table/pagination-controls
       modelMetaData=modelMetaData
       paginationLinks=paginationLinks
       setProperty=(action setProperty)

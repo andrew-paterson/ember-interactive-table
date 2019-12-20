@@ -1,18 +1,19 @@
 import Mixin from '@ember/object/mixin';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
-import pojoFormFromQueryParams from 'ember-pojo-validating-fields/utils/pojo-form-from-query-params';
+import pojoFormFromQueryParams from 'ember-pojo-validating-fields/utils/form-schema-from-query-params';
 
 export default Mixin.create({
-  queryParamsService: service(),
+  emberInteractiveTable: service(),
 
   init() {
     this._super(...arguments);
     if (this.get('queryParamsArray')) {
-      this.queryParams = this.get('queryParamsArray.items').map(item => { return item.key; });
+      this.queryParams = this.get('queryParamsArray.items').map(item => { return item.qpKey || item.key; });
+      console.log(this.get('queryParams'));
       this.send('applyDefaults');
       var queryParamsName = this.get('queryParamsArray.name');
-      this.set(`queryParamsService.${queryParamsName}`, this.get('queryParamsArray.items'));
+      this.set(`emberInteractiveTable.${queryParamsName}`, this.get('queryParamsArray.items'));
     }
   },
 

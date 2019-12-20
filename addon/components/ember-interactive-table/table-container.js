@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import layout from '../../../templates/components/hyrax-ember-assets/interactive-table/table-container';
+import layout from '../../templates/components/ember-interactive-table/table-container';
 
 export default Component.extend({
   layout,

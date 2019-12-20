@@ -11,6 +11,7 @@ export default Component.extend({
 
   paginationObject: computed('paginationLinks', function() {
     var paginationLinks = this.get('paginationLinks');
+    console.log(paginationLinks);
     var paginationObject = {};
     $.each(paginationLinks, function(key, val) {
       var queryParamsString = val.split('?')[1];
@@ -25,6 +26,7 @@ export default Component.extend({
         }
       });
     });
+    console.log(paginationObject);
     return paginationObject;
   }),
 
