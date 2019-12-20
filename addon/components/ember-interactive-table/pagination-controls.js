@@ -11,7 +11,6 @@ export default Component.extend({
 
   paginationObject: computed('paginationLinks', function() {
     var paginationLinks = this.get('paginationLinks');
-    console.log(paginationLinks);
     var paginationObject = {};
     $.each(paginationLinks, function(key, val) {
       var queryParamsString = val.split('?')[1];
@@ -24,14 +23,18 @@ export default Component.extend({
             paginationObject[key].number = value;
           }
         }
+        if (param === 'page%5Bsize%5D') {
+          if (value) {
+            paginationObject.size = value;
+          }
+        }
       });
     });
-    console.log(paginationObject);
     return paginationObject;
   }),
 
-  pageSize: computed('modelMetaData', function() {
-    var pageSize = this.get('modelMetaData.page_size');
+  pageSize: computed('modelMetaData', 'paginationObject', function() {
+    var pageSize = parseInt(this.get('paginationObject.size'));
     var maxPageSize = this.get('modelMetaData.max_page_size');
     var minPageSize = this.get('modelMetaData.min_page_size');
     var pageSizeIsMax = this.get('modelMetaData.page_size_is_max');
