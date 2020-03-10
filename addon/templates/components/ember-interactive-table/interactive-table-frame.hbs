@@ -16,7 +16,8 @@
             {{ember-pojo-form/validating-form
               formSchema=filterFormSchema
               submitAction=(action applyFilters)
-              afterReset=(action clearAllFilters)
+              beforeReset=(action clearAllFilters)
+              afterReset=(action "test")
               data=filterProps
             }}
           {{else}}
@@ -39,21 +40,25 @@
 {{/if}}
   {{yield (hash aboveTable="blank-template")}}
   {{#if model}}
-    {{ember-interactive-table/pagination-controls
-      modelMetaData=modelMetaData
-      paginationLinks=paginationLinks
-      setProperty=(action setProperty)
-      class="margin-bottom-lg"
-    }}
+    {{#if paginationLinks}}
+      {{ember-interactive-table/pagination-controls
+        modelMetaData=modelMetaData
+        paginationLinks=paginationLinks
+        setProperty=(action setProperty)
+        class="margin-bottom-lg"
+      }}
+    {{/if}}
     {{#ember-interactive-table/table-container}}
       {{yield (hash tableComponent="blank-template")}}
     {{/ember-interactive-table/table-container}}
-    {{ember-interactive-table/pagination-controls
-      modelMetaData=modelMetaData
-      paginationLinks=paginationLinks
-      setProperty=(action setProperty)
-      class="margin-top-lg"
-    }}
+    {{#if paginationLinks}}
+      {{ember-interactive-table/pagination-controls
+        modelMetaData=modelMetaData
+        paginationLinks=paginationLinks
+        setProperty=(action setProperty)
+        class="margin-top-lg"
+      }}
+    {{/if}}
   {{else}}
     {{#ember-extended-elements/in-page-alert type="info" dataTestId="no-items-notice"}}
       {{#if filtersActive}}

@@ -29,7 +29,6 @@ export default Mixin.create({
         }
         this.set(qpObject.key, qpObject.defaultValue);
       });
-      
     },
 
     setSortParamsNew(newSortField, defaultDirection = 'desc') {
