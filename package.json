@@ -1,6 +1,6 @@
 {
   "name": "ember-interactive-table",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon"
@@ -22,7 +22,8 @@
   },
   "dependencies": {
     "ember-cli-babel": "^6.16.0",
-    "ember-cli-htmlbars": "^2.0.1"
+    "ember-cli-htmlbars": "^2.0.1",
+    "ember-lodash": "^4.19.5"
   },
   "devDependencies": {
     "@ember/optional-features": "^0.6.3",
