@@ -17,7 +17,6 @@
               formSchema=filterFormSchema
               submitAction=(action applyFilters)
               beforeReset=(action clearAllFilters)
-              afterReset=(action "test")
               data=filterProps
             }}
           {{else}}
@@ -38,33 +37,35 @@
     {{/basic-dropdown}}
   </div>
 {{/if}}
-  {{yield (hash aboveTable="blank-template")}}
-  {{#if model}}
-    {{#if paginationLinks}}
-      {{ember-interactive-table/pagination-controls
-        modelMetaData=modelMetaData
-        paginationLinks=paginationLinks
-        setProperty=(action setProperty)
-        class="margin-bottom-lg"
-      }}
-    {{/if}}
-    {{#ember-interactive-table/table-container}}
-      {{yield (hash tableComponent="blank-template")}}
-    {{/ember-interactive-table/table-container}}
-    {{#if paginationLinks}}
-      {{ember-interactive-table/pagination-controls
-        modelMetaData=modelMetaData
-        paginationLinks=paginationLinks
-        setProperty=(action setProperty)
-        class="margin-top-lg"
-      }}
-    {{/if}}
-  {{else}}
-    {{#ember-extended-elements/in-page-alert type="info" dataTestId="no-items-notice"}}
-      {{#if filtersActive}}
-        Your selected filters don"t match any {{pluralRecordName}}. Please update your filter settings, or click <b>Clear filters</b> above.
-      {{else}}
-        You have no {{pluralRecordName}} to display yet.
-      {{/if}}
-    {{/ember-extended-elements/in-page-alert}}
+{{yield (hash aboveTable=(component "blank-template"))}}
+{{#if model}}
+  {{#if paginationLinks}}
+    {{ember-interactive-table/pagination-controls
+      modelMetaData=modelMetaData
+      paginationLinks=paginationLinks
+      setProperty=(action setProperty)
+      class="margin-bottom-lg"
+    }}
   {{/if}}
+  <div class="data-table-wrapper {{if trashed "viewing-trashed-items"}} {{if deletionPending "deletion-pending"}}">
+    <div class="data-table-wrapper-inner">
+      {{yield (hash tableComponent=(component "blank-template"))}}
+    </div>
+  </div>
+  {{#if paginationLinks}}
+    {{ember-interactive-table/pagination-controls
+      modelMetaData=modelMetaData
+      paginationLinks=paginationLinks
+      setProperty=(action setProperty)
+      class="margin-top-lg"
+    }}
+  {{/if}}
+{{else}}
+  {{#ember-extended-elements/in-page-alert type="info" dataTestId="no-items-notice"}}
+    {{#if filtersActive}}
+      Your selected filters don"t match any {{pluralRecordName}}. Please update your filter settings, or click <b>Clear filters</b> above.
+    {{else}}
+      You have no {{pluralRecordName}} to display yet.
+    {{/if}}
+  {{/ember-extended-elements/in-page-alert}}
+{{/if}}

@@ -1,1 +1,30 @@
-{{yield}}
+<tr class="{{ember-interactive-table/odd-or-even index}}">
+  {{#unless hideExpandCollapse}}
+    <td class="expand-collapse-cell">
+      {{ember-interactive-table/expand-collapse-row-button expanded=expanded toggleExpanded=(action "toggleExpanded")}}
+    </td>
+  {{/unless}}
+  {{#unless hideSelectRow}}
+    <td class="select"><EmberExtendedElements::LabelledCheckbox @changedAction={{action "toggleSelected" item}} @value={{item.selected}} /></td>
+  {{/unless}}
+  {{yield (hash mainRow=(component "blank-template" tagName=""))}}
+</tr>
+{{#if expanded}}
+  <tr class="data-table-row-expaned {{ember-interactive-table/odd-or-even index}}">
+    <td colspan={{columns}}>
+      <div class="flex flex-align-start">
+        {{ember-interactive-table/expand-collapse-row-button 
+          class="margin-right-lg"
+          expanded=expanded 
+          toggleExpanded=(action "toggleExpanded")
+        }}
+        <div class="data-table-row-expaned-content flex-expand">
+          {{yield (hash expandedRow=(component "blank-template" tagName=""))}}
+        </div>
+        <button class="btn-content hide-details-icon close-button" onclick={{action "toggleExpanded"}}>
+          {{svg-repo/icons/icon-cross }}
+        </button>
+      </div>
+    </td>
+  </tr>
+{{/if}}
