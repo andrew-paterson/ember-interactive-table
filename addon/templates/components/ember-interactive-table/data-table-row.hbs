@@ -5,13 +5,13 @@
     </td>
   {{/unless}}
   {{#unless hideSelectRow}}
-    <td class="select"><EmberExtendedElements::LabelledCheckbox @changedAction={{action "toggleSelected" item}} @value={{item.selected}} /></td>
+    <td class="select"><EmberExtendedElements::LabelledCheckbox @changedAction={{action "toggleSelected" record}} @value={{record.selected}} /></td>
   {{/unless}}
   {{yield (hash mainRow=(component "blank-template" tagName=""))}}
 </tr>
 {{#if expanded}}
   <tr class="data-table-row-expaned {{ember-interactive-table/odd-or-even index}}">
-    <td colspan={{columns}}>
+    <td colspan="1000">
       <div class="flex flex-align-start">
         {{ember-interactive-table/expand-collapse-row-button 
           class="margin-right-lg"
