@@ -1,7 +1,11 @@
 {{#if (or filtersComponent filterFormSchema)}}
   <div class="margin-bottom-lg">
-    {{#basic-dropdown verticalPosition="below" renderInPlace=true positionStatic=true initiallyOpened=filtersActive as |dropdown|}}
-      {{#dropdown.trigger}}
+    <BasicDropdown 
+      @verticalPosition="below" 
+      @renderInPlace={{true}} 
+      @positionStatic={{true}} 
+      @initiallyOpened={{filtersActive}} as |Dropdown|>
+      <Dropdown.Trigger>
         <button class="btn btn-outline-primary">
           {{#if dropdown.isOpen}}
             {{svg-repo/icons/icon-cross}}Hide Filters
@@ -9,8 +13,8 @@
             {{svg-repo/icons/icon-filter}}Show Filters
           {{/if}}
         </button>
-      {{/dropdown.trigger}}
-      {{#dropdown.content class="filter-controls body-content position-static"}}
+      </Dropdown.Trigger>
+      <Dropdown.Content class="filter-controls body-content position-static">
         <div class="pop-up-box box-arrow">
           {{#if filterFormSchema}}
             {{ember-pojo-form/validating-form
@@ -33,8 +37,8 @@
             </div>
           {{/if}}
         </div>
-      {{/dropdown.content}}
-    {{/basic-dropdown}}
+      </Dropdown.Content>
+    </BasicDropdown>
   </div>
 {{/if}}
 {{yield (hash aboveTable=(component "blank-template"))}}
@@ -61,7 +65,7 @@
     }}
   {{/if}}
 {{else}}
-  {{#ember-extended-elements/in-page-alert type="info" dataTestId="no-items-notice"}}
+  {{#ember-extended-elements/in-page-alert type="info" data-test-id="no-items-notice"}}
     {{#if filtersActive}}
       Your selected filters don"t match any {{pluralRecordName}}. Please update your filter settings, or click <b>Clear filters</b> above.
     {{else}}

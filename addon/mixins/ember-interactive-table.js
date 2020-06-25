@@ -54,7 +54,7 @@ export default Mixin.create({
         var value = filterFormValues[key];
         var thisObject = queryParamsArray.findBy('key', key) || {};
         if (thisObject.type === 'date' && value) {
-          value = moment(value).format('YYYY-MM-DDThh:mm:ss').toString();
+          value = moment(value).format(thisObject.qpDateFormat || 'YYYY-MM-DDThh:mm:ss').toString();
         }
         this.set(key, value);
       }
