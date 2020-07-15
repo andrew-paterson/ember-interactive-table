@@ -1,7 +1,6 @@
 import Component from '@ember/component';
 import layout from '../../templates/components/ember-interactive-table/pagination-controls';
 import { computed } from '@ember/object';
-import $ from 'jquery';
 
 export default Component.extend({
   layout,
@@ -11,8 +10,10 @@ export default Component.extend({
 
   paginationObject: computed('paginationLinks', function() {
     var paginationLinks = this.get('paginationLinks');
+    if (!paginationLinks) { return; }
     var paginationObject = {};
-    $.each(paginationLinks, function(key, val) {
+    for (var key in paginationLinks) {
+      var val = paginationLinks[key];
       var queryParamsString = val.split('?')[1];
       var queryParams = queryParamsString.split('&');
       paginationObject[key] = {};
@@ -29,7 +30,7 @@ export default Component.extend({
           }
         }
       });
-    });
+    }
     return paginationObject;
   }),
 

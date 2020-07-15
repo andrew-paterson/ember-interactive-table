@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import layout from '../../templates/components/ember-interactive-table/data-table-container';
+import isEmptyObject from 'ember-interactive-table/utils/is-empty-object';
 
 export default Component.extend({
   layout,
@@ -45,6 +46,7 @@ export default Component.extend({
   }),
 
   paginationLinks: computed('model', function() {
+    if (isEmptyObject(this.get('model.links'))) { return; }
     return this.get('model.links');
   }),
 
