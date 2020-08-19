@@ -56,6 +56,14 @@ export default Mixin.create({
         if (thisObject.type === 'date' && value) {
           value = moment(value).format(thisObject.qpDateFormat || 'YYYY-MM-DDThh:mm:ss').toString();
         }
+        if (thisObject.objectKeyPath) {
+          value = value[thisObject.objectKeyPath];
+        }
+        if (thisObject.arrayObjectKeyPath) {
+          value = value.map(item => {
+            return item[thisObject.arrayObjectKeyPath];
+          });
+        }
         this.set(key, value);
       }
       this.send('refreshModel');

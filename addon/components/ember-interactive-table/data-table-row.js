@@ -11,7 +11,6 @@ export default Component.extend({
     },
 
     toggleSelected: function(item) {
-      console.log(item);
       item.toggleProperty("selected");
     },
   }

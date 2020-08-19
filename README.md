@@ -49,3 +49,8 @@ License
 ------------------------------------------------------------------------------
 
 This project is licensed under the [MIT License](LICENSE.md).
+
+
+Document qpKey, objectKeyPath and arrayObjectKeyPath.
+
+cjangr type=date to dateFormat in queryParamsArray.
