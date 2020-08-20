@@ -60,9 +60,10 @@ export default Mixin.create({
           value = value[thisObject.objectKeyPath];
         }
         if (thisObject.arrayObjectKeyPath) {
-          value = value.map(item => {
+          value = (value || []).map(item => {
             return item[thisObject.arrayObjectKeyPath];
           });
+          
         }
         this.set(key, value);
       }
