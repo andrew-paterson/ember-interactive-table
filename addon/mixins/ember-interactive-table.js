@@ -21,13 +21,34 @@ export default Mixin.create({
   }),
 
   actions: {
+    // TODO DRY this up.
+    objectsInPathCheck(property) {
+      if (this.get(property)) {
+        property = this.get(property).altKey || property; // Gets the aliased value if it exists
+      }
+      if (property.split('.').length > 1) {
+        var levels = property.split('.');
+        levels.forEach((_, index) => {
+          var thisLevelProp = levels.slice(0, index + 1).join('.');
+          if (!this.get(thisLevelProp)) {
+            this.set(thisLevelProp, {});
+          }
+        });
+      }
+    },
+
+    setProperty: function(property, value) {
+      this.send('objectsInPathCheck', property);
+      this.set(property, value);
+    },
+
     applyDefaults() {
       var queryParamsArray = this.get('queryParamsArray') || [];
       queryParamsArray.items.forEach(qpObject => {
         if (Array.isArray(qpObject.defaultValue)) {
           qpObject.defaultValue = qpObject.defaultValue.join(',');
         }
-        this.set(qpObject.key, qpObject.defaultValue);
+        this.send('setProperty', qpObject.key, qpObject.defaultValue);
       });
     },
 
