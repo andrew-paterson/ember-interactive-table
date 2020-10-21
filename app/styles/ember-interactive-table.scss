@@ -1,3 +1,15 @@
+
+
+.ember-basic-dropdown-content.position-static {
+  position: static;
+}
+
 @import "./_data-table";
 @import "./_data-table-filter-controls";
 @import "./_data-table-pagination-controls";
+
+.sorting-controls {
+  a {
+    text-transform: capitalize;
+  }
+}

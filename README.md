@@ -54,3 +54,13 @@ This project is licensed under the [MIT License](LICENSE.md).
 Document qpKey, objectKeyPath and arrayObjectKeyPath.
 
 cjangr type=date to dateFormat in queryParamsArray.
+
+type=array
+
+Document that the parent must get the dot, to have nested params, and avoind the dotn in the URL.
+  eg
+     key: 'pathogen',
+    parent: 'filter.tool_options',
+    defaultValue: ['hiv', 'tb', 'breastcarcinoma'],
+    type: 'array',
+  qp in UI url is just `pathogen` but in request it is `filter[tool_options][pathogen]`

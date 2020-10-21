@@ -10,7 +10,7 @@
       flex-wrap: wrap;
       padding-right: 0;
       .ember-pojo-form-field {
-        min-width: calc(33.3% - 15px);
+        min-width: calc(33.3% - 24px);
         margin: $spacer-lg;
         
         .ember-power-select-trigger {
@@ -47,9 +47,10 @@
     display: inline-flex;
     align-items: center;
     // margin: -50px 0 0 15px !important
-    position: absolute;
-    bottom: 16px;
-    left: 15px;
+    // position: absolute;
+    // bottom: 16px;
+    // left: 15px;
+    padding: $spacer-md;
     font-size: 1.2em;
     color: #777;
     svg.filters-active-icon {

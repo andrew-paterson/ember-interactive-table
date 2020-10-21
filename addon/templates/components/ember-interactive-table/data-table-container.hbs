@@ -1,13 +1,21 @@
 {{#if (or filtersComponent filterFormSchema)}}
-  <div class="margin-bottom-lg">
+  <div class="margin-bottom-lg sort-filter">
+    {{#if sortParams.sortProps}}
+      <div class="sorting-controls flex margin-bottom-lg">
+        <h3 class="margin-right-lg">Sort by: </h3>
+        {{#each sortParams.sortProps as | propName |}}
+          <a {{action setSortParamsNew propName (or defaultSortDirection "asc")}} class="margin-right-lg btn btn-outline-gray-medium">{{propName}}</a>
+        {{/each}}
+      </div>
+    {{/if}}
     <BasicDropdown 
       @verticalPosition="below" 
       @renderInPlace={{true}} 
       @positionStatic={{true}} 
       @initiallyOpened={{filtersActive}} as |Dropdown|>
       <Dropdown.Trigger>
-        <button class="btn btn-outline-primary">
-          {{#if dropdown.isOpen}}
+        <button class={{or filtersTriggerClass "btn btn-outline-primary"}}>
+          {{#if Dropdown.isOpen}}
             {{svg-repo/icons/icon-cross}}Hide Filters
           {{else}}
             {{svg-repo/icons/icon-filter}}Show Filters
@@ -16,6 +24,11 @@
       </Dropdown.Trigger>
       <Dropdown.Content class="filter-controls body-content position-static">
         <div class="pop-up-box box-arrow">
+          {{#if filtersActive}}
+            <div class="filtering-results">
+              {{svg-repo/icons/icon-asterisk class="filters-active-icon bg-primary"}} Filters are active ({{modelMetaData.filtered_data_length}} {{ember-skeleton/custom-inflector modelMetaData.filtered_data_length singular=singleRecordName plural=pluralRecordName}} returned).
+            </div>
+          {{/if}}
           {{#if filterFormSchema}}
             {{ember-pojo-form/validating-form
               formSchema=filterFormSchema
@@ -31,11 +44,7 @@
               filterFormSchema=filterFormSchema
             }}
           {{/if}}
-          {{#if filtersActive}}
-            <div class="filtering-results">
-              {{svg-repo/icons/icon-asterisk class="filters-active-icon bg-primary"}} Filters are active ({{modelMetaData.filtered_data_length}} {{ember-skeleton/custom-inflector modelMetaData.filtered_data_length singular=singleRecordName plural=pluralRecordName}} returned).
-            </div>
-          {{/if}}
+          
         </div>
       </Dropdown.Content>
     </BasicDropdown>
