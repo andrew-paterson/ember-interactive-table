@@ -34,6 +34,7 @@
               formSchema=filterFormSchema
               submitAction=(action applyFilters)
               beforeReset=(action clearAllFilters)
+              afterFieldEdit=(action afterFieldEdit)
               data=filterProps
             }}
           {{else}}
@@ -44,7 +45,6 @@
               filterFormSchema=filterFormSchema
             }}
           {{/if}}
-          
         </div>
       </Dropdown.Content>
     </BasicDropdown>

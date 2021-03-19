@@ -51,7 +51,6 @@ export default Component.extend({
   }),
 
   filtersActive: computed('model.meta', function() {
-    console.log('meta')
     return this.get('model.meta.filtered_data_length') < this.get('model.meta.total_data_length');
   }),
 
@@ -102,6 +101,6 @@ export default Component.extend({
         type: flashType,
         message: flashMessage
       });
-    },
+    }
   }
 });
