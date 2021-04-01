@@ -74,9 +74,9 @@ export default Mixin.create({
       for (var key in filterFormValues) {
         var value = filterFormValues[key];
         var thisObject = queryParamsArray.findBy('key', key) || {};
-        if (thisObject.type === 'date' && value) {
-          value = moment(value).format(thisObject.qpDateFormat || 'YYYY-MM-DDThh:mm:ss').toString();
-        }
+        // if (thisObject.type === 'date' && value) {
+        //   value = moment(value).format(thisObject.qpDateFormat || 'YYYY-MM-DDThh:mm:ss').toString();
+        // }
         if (thisObject.objectKeyPath) {
           value = value[thisObject.objectKeyPath];
         }

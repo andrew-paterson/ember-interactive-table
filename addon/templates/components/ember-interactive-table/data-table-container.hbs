@@ -33,15 +33,16 @@
             {{#if filterFormSchema}}
               {{ember-pojo-form/validating-form
                 formSchema=filterFormSchema
-                submitAction=(action applyFilters)
-                beforeReset=(action clearAllFilters)
-                afterFieldEdit=(action afterFieldEdit)
+                submitAction=applyFilters
+                beforeReset=clearAllFilters
+                afterFieldEdit=filterFieldChanged
                 data=filterProps
               }}
             {{else}}
               {{component filtersComponent
-                applyFilters=(action applyFilters)
-                clearAllFilters=(action clearAllFilters)
+                applyFilters=applyFilters
+                clearAllFilters=clearAllFilters
+                afterFieldEdit=filterFieldChanged
                 data=filterProps
                 filterFormSchema=filterFormSchema
               }}
