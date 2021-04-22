@@ -46,6 +46,21 @@ export default Service.extend({
       }
     } 
     return prop;
-  }
+  },
+
+  queryParams: {
+    page: {
+      refreshModel: true
+    },
+    size: {
+      refreshModel: true
+    },
+    sort: {
+      refreshModel: true
+    },
+    trashed: {
+      refreshModel: true
+    }
+  },
 
 });

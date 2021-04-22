@@ -5,7 +5,7 @@
         <div class="sorting-controls flex margin-bottom-lg">
           <h3 class="margin-right-lg">Sort by: </h3>
           {{#each sortParams.sortProps as | propName |}}
-            <a {{action setSortParamsNew propName (or defaultSortDirection "asc")}} class="margin-right-lg btn btn-outline-gray-medium">{{propName}}</a>
+            <a {{action setSortParams propName (or defaultSortDirection "asc")}} class="margin-right-lg btn btn-outline-gray-medium">{{propName}}</a>
           {{/each}}
         </div>
       {{/if}}
@@ -60,7 +60,8 @@
     {{ember-interactive-table/pagination-controls
       modelMetaData=modelMetaData
       paginationLinks=paginationLinks
-      setProperty=(action setProperty)
+      page=page 
+      size=size
       class="margin-bottom-lg"
     }}
   {{/if}}
@@ -73,7 +74,8 @@
     {{ember-interactive-table/pagination-controls
       modelMetaData=modelMetaData
       paginationLinks=paginationLinks
-      setProperty=(action setProperty)
+      page=page 
+      size=size
       class="margin-top-lg"
     }}
   {{/if}}
