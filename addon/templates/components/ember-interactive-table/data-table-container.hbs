@@ -80,11 +80,11 @@
     }}
   {{/if}}
 {{else}}
-  {{#ember-extended-elements/in-page-alert type="info" data-test-id="no-items-notice"}}
+  {{#ember-sundries/in-page-alert type="info" data-test-id="no-items-notice"}}
     {{#if filtersActive}}
       Your selected filters don"t match any {{pluralRecordName}}. Please update your filter settings, or click <b>Clear filters</b> above.
     {{else}}
       You have no {{pluralRecordName}} to display yet.
     {{/if}}
-  {{/ember-extended-elements/in-page-alert}}
+  {{/ember-sundries/in-page-alert}}
 {{/if}}

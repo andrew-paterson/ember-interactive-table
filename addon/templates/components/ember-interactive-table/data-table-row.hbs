@@ -5,7 +5,7 @@
     </td>
   {{/unless}}
   {{#unless hideSelectRow}}
-    <td class="select"><EmberExtendedElements::LabelledCheckbox @changedAction={{action "toggleSelected" record}} @value={{record.selected}} /></td>
+    <td class="select"><EmberSundries::LabelledCheckbox @changedAction={{action "toggleSelected" record}} @value={{record.selected}} /></td>
   {{/unless}}
   {{yield (hash mainRow=(component "blank-template" tagName=""))}}
 </tr>
