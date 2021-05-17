@@ -1,7 +1,5 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
-import { computed } from '@ember/object';
-import pojoFormFromQueryParams from 'ember-pojo-validating-fields/utils/form-schema-from-query-params';
 
 export default Controller.extend({
   emberInteractiveTable: service(),
@@ -15,10 +13,6 @@ export default Controller.extend({
       this.set(`emberInteractiveTable.${queryParamsName}`, this.get('queryParamsArray.items'));
     }
   },
-
-  filterFormSchema: computed('queryParamsArray', function() {
-    return pojoFormFromQueryParams(this.get('queryParamsArray'));
-  }),
 
   actions: {
     applyDefaults() {
