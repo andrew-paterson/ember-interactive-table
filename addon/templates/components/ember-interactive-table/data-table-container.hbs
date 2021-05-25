@@ -31,13 +31,13 @@
               </div>
             {{/if}}
             {{#if filterFormSchema}}
-              {{ember-pojo-form/validating-form
-                formSchema=filterFormSchema
-                submitAction=applyFilters
-                beforeReset=clearAllFilters
-                afterFieldEdit=filterFieldChanged
-                data=filterProps
-              }}
+              <ChangesetWebform
+                @formSchema={{filterFormSchema}}
+                @submitAction={{applyFilters}}
+                @beforeReset={{clearAllFilters}}
+                @afterFieldEdit={{filterFieldChanged}}
+                @data={{filterProps}}
+              />
             {{else}}
               {{component filtersComponent
                 applyFilters=applyFilters
