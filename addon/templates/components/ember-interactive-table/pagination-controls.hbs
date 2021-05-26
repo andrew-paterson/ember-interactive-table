@@ -1,20 +1,20 @@
-<div class="page-navigation">
+<div class="page-navigation" data-test-class="eit-pagination">
   {{#if paginationObject.prev}}
-    <button onclick={{action (mut page) paginationObject.first.number}} class="incrementing-arrow-double left-right margin-right-md btn-content" title="First">{{svg-repo/icons/icon-arrow-left-double}}</button>
-    <button onclick={{action (mut page) paginationObject.prev.number}} class="incrementing-arrow left-right right margin-right-md btn-content" title="Previous">{{svg-repo/icons/icon-arrow-left}}</button>
+    <button onclick={{action (mut page) paginationObject.first.number}} class="incrementing-arrow-double left-right margin-right-md btn-content" title="First" data-test-class="eit-pagination-first">{{svg-repo/icons/icon-arrow-left-double}}</button>
+    <button onclick={{action (mut page) paginationObject.prev.number}} class="incrementing-arrow left-right right margin-right-md btn-content" title="Previous" data-test-class="eit-pagination-prev">{{svg-repo/icons/icon-arrow-left}}</button>
   {{/if}}
-  <div class="page-number-input">
+  <div class="page-number-input" data-test-class="eit-pagination-page-number">
     Page {{input value=(readonly paginationObject.self.number) change=(action (action (mut page)) value="target.value")}} of {{paginationObject.last.number}}
   </div>
   {{#if paginationObject.next}}
-    <button onclick={{action (mut page) paginationObject.next.number}} class="incrementing-arrow left-right margin-left-md btn-content" title="Next">{{svg-repo/icons/icon-arrow-right}}</button>
-    <button onclick={{action (mut page) paginationObject.last.number}} class="incrementing-arrow-double left-right margin-left-md btn-content" title="Last">{{svg-repo/icons/icon-arrow-right-double}}</button>
+    <button onclick={{action (mut page) paginationObject.next.number}} class="incrementing-arrow left-right margin-left-md btn-content" title="Next" data-test-class="eit-pagination-next">{{svg-repo/icons/icon-arrow-right}}</button>
+    <button onclick={{action (mut page) paginationObject.last.number}} class="incrementing-arrow-double left-right margin-left-md btn-content" title="Last" data-test-class="eit-pagination-last">{{svg-repo/icons/icon-arrow-right-double}}</button>
   {{/if}}
 </div>
 <div class="page-size">
   <div class="arrows">
-    <button onclick={{action (mut size) pageSize.nextUp}} class="incrementing-arrow up-down up btn-content" title="Next">{{svg-repo/icons/icon-arrow-up}}</button>
-    <button onclick={{action (mut size) pageSize.nextDown}} class="incrementing-arrow up-down down btn-content" title="Last">{{svg-repo/icons/icon-arrow-down}}</button>
+    <button onclick={{action (mut size) pageSize.nextUp}} class="incrementing-arrow up-down up btn-content" title="Next" data-test-class="eit-pagination-increase-page-size">{{svg-repo/icons/icon-arrow-up}}</button>
+    <button onclick={{action (mut size) pageSize.nextDown}} class="incrementing-arrow up-down down btn-content" title="Last" data-test-class="eit-pagination-decrease-page-size">{{svg-repo/icons/icon-arrow-down}}</button>
   </div>
-  <span class="page-size">{{pageSize.current}}</span> items per page
+  <span class="page-size" data-test-class="eit-pagination-current-page-size">{{pageSize.current}}</span> items per page
 </div>

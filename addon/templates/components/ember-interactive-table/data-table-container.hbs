@@ -15,7 +15,7 @@
         @positionStatic={{true}} 
         @initiallyOpened={{filtersActive}} as |Dropdown|>
         <Dropdown.Trigger>
-          <button class={{or filtersTriggerClass "btn btn-outline-primary"}}>
+          <button class={{or filtersTriggerClass "btn btn-outline-primary"}} data-test-id="toggle-filters-button">
             {{#if Dropdown.isOpen}}
               {{svg-repo/icons/icon-cross}}Hide Filters
             {{else}}
@@ -37,6 +37,7 @@
                 @beforeReset={{clearAllFilters}}
                 @afterFieldEdit={{filterFieldChanged}}
                 @data={{filterProps}}
+                data-test-id="filters-form"
               />
             {{else}}
               {{component filtersComponent
