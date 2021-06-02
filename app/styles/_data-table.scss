@@ -30,6 +30,9 @@ table.data-table {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    div {
+      white-space: normal !important;
+    }
   }
   $sortable-icon-background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.86 69.95" class="icon-sortable" fill="%23fff"><polygon points="16.43 0 32.86 28.46 0 28.46 16.43 0"/><polygon points="16.43 69.95 32.86 41.49 0 41.49 16.43 69.95"/></svg>') !default;
 

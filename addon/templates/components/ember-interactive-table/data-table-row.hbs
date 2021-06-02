@@ -10,7 +10,7 @@
   {{yield (hash mainRow=(component "blank-template" tagName=""))}}
 </tr>
 {{#if expanded}}
-  <tr class="data-table-row-expaned {{ember-interactive-table/odd-or-even index}}">
+  <tr class="data-table-row-expanded {{ember-interactive-table/odd-or-even index}}" data-test-class="eit-data-table-row-extended">
     <td colspan="1000">
       <div class="flex flex-align-start">
         {{ember-interactive-table/expand-collapse-row-button 
@@ -18,7 +18,7 @@
           expanded=expanded 
           toggleExpanded=(action "toggleExpanded")
         }}
-        <div class="data-table-row-expaned-content flex-expand">
+        <div class="data-table-row-expanded-content flex-expand">
           {{yield (hash expandedRow=(component "blank-template" tagName=""))}}
         </div>
         <button class="btn-content hide-details-icon close-button" onclick={{action "toggleExpanded"}}>
