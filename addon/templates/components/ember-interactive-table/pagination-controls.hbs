@@ -16,5 +16,5 @@
     <button onclick={{action (mut size) pageSize.nextUp}} class="incrementing-arrow up-down up btn-content" title="Next" data-test-class="eit-pagination-increase-page-size">{{svg-repo/icons/icon-arrow-up}}</button>
     <button onclick={{action (mut size) pageSize.nextDown}} class="incrementing-arrow up-down down btn-content" title="Last" data-test-class="eit-pagination-decrease-page-size">{{svg-repo/icons/icon-arrow-down}}</button>
   </div>
-  <span class="page-size" data-test-class="eit-pagination-current-page-size">{{pageSize.current}}</span> items per page
+  <span class="page-size" data-test-class="eit-pagination-current-page-size">{{input value=(readonly pageSize.current) change=(action (action (mut size)) value="target.value")}}</span> items per page
 </div>
