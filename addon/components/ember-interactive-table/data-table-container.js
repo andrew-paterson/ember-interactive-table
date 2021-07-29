@@ -7,6 +7,7 @@ import isEmptyObject from 'ember-interactive-table/utils/is-empty-object';
 export default Component.extend({
   layout,
   emberSkeleton: service(),
+  classNames: ['width-100', 'overflow-x-auto'],
 
   didInsertElement() {
     if (!this.get('singleRecordName')) {
