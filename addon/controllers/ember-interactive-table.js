@@ -54,8 +54,8 @@ export default Controller.extend({
           value = (value || []).map(item => {
             return item[thisObject.arrayObjectKeyPath];
           });
-          
         }
+        value = (value || []).length === 0 ? null : value;
         this.set(key, value);
       }
       this.send('refreshModel');

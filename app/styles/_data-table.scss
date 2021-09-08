@@ -12,97 +12,117 @@ $id-column-outer-width: 60px;
 
 table.data-table {
   margin: 0 0 0px -1px;
-
-  tr.odd td {
+  > tbody > tr.odd > td {
     background: #eee;
   }
 
-  tr.update-success td {
+  > tbody > tr.update-success > td {
     background-color: lighten($success-background-color, 30%);
   }
 
-  td,
-  th {
+  > tbody > tr > td,
+  > thead > tr > th {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     div {
       white-space: normal !important;
     }
+    &.thin {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
   }
   $sortable-icon-background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.86 69.95" class="icon-sortable" fill="%23fff"><polygon points="16.43 0 32.86 28.46 0 28.46 16.43 0"/><polygon points="16.43 69.95 32.86 41.49 0 41.49 16.43 69.95"/></svg>') !default;
 
-  
-  th {
+  > thead > tr > th {
     padding-top: $spacer-lg;
     padding-bottom: $spacer-lg;
     background-color: darken($gray-light, 20%);
     border-color: darken($gray-light, 35%);
     color: #fff;
-  }
-
-  th.icon-header {
-    line-height: 0;
-    text-align: center;
+    &.icon-header {
+      line-height: 0;
+      text-align: center;
+      svg {
+        margin: 0;
+        height: 30px;
+        padding: 0;
+        width: auto;
+        fill: #fff;
+      }
+    }
+    &.sortable {
+      background-image: $sortable-icon-background;
+      background-repeat:  no-repeat;
+      background-position: right 6px center;
+      background-size: auto 14px;
+      padding-right: 24px;
+    }
+    &.sortable:hover {
+      cursor: pointer;
+      background-color: darken($gray-light, 20%);
+    }
     svg {
-      margin: 0;
-      height: 30px;
-      padding: 0;
-      width: auto;
       fill: #fff;
     }
   }
-
-  th svg {
-    fill: #fff;
-  }
-
-  th.sortable {
-    background-image: $sortable-icon-background;
-    background-repeat:  no-repeat;
-    background-position: right 6px center;
-    background-size: auto 14px;
-    padding-right: 24px;
-  }
-
-  th.sortable:hover {
-    cursor: pointer;
-    background-color: darken($gray-light, 20%);
-  }
-
-  td {
+  > tbody > tr > td {
     line-height: 140%;
     background: #fff;
     box-sizing: border-box;
-  }
-
-  tr .thin {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-
-  tr th.thin {
-    text-align: center;
-  }
-
-  td.text-align-right {
-    text-align: right;
-  }
-
-  /*-----------Styles for specific types of columns and icons------------*/
-
-
-  td.date-time {
-    div {
-      line-height: 120%;
+    &.date-time {
+      div {
+        line-height: 120%;
+      }
+      .time {
+        font-size: 0.9em;
+        color: $gray-medium;
+      }
     }
-    .time {
-      font-size: 0.9em;
-      color: $gray-medium;
+    
+    tr.additional-info.collapsed {
+      display: none;
+    }
+    
+    &.additional-info-icon {
+      vertical-align: top;
+      padding: $spacer-lg $spacer-md $spacer-md;
+      width: 30px;
+      text-align: center;
+    }
+    
+    &.additional-info-icon {
+      fill: $primary;
+      border-right-width: 0;
+      svg {
+        width: $spacer-lg;
+      }
+    }
+    
+    &.additional-info-content {
+      border-left-width: 0;
+      line-height: 180%;
+    }
+    
+    &.data-cell-icon {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    
+    &.data-cell-icon svg {
+      margin-right: $spacer-md;
+      height: $spacer-lg*1.25;
+      padding: 0;
+      display: inline-block;
+    }
+    
+    &.data-cell-icon svg {
+      width: 20px;
+      margin-bottom: -3px;
     }
   }
 
-  
   .expand-collapse-button {
     color: #999;
     font-size: 1em;
@@ -122,48 +142,6 @@ table.data-table {
         fill: #222;
       }
     }
-  }
-	
-  tr.additional-info.collapsed {
-    display: none;
-  }
-
-  td.additional-info-icon {
-    vertical-align: top;
-    padding: $spacer-lg $spacer-md $spacer-md;
-    width: 30px;
-    text-align: center;
-  }
-
-  td.additional-info-icon {
-    fill: $primary;
-    border-right-width: 0;
-
-    svg {
-      width: $spacer-lg;
-    }
-  }
-
-  td.additional-info-content {
-    border-left-width: 0;
-    line-height: 180%;
-  }
-
-  td.data-cell-icon {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-
-  td.data-cell-icon svg {
-    margin-right: $spacer-md;
-    height: $spacer-lg*1.25;
-    padding: 0;
-    display: inline-block;
-  }
-
-  td.data-cell-icon svg {
-    width: 20px;
-    margin-bottom: -3px;
   }
 }
 

@@ -58,13 +58,13 @@
 
 {{#if model}}
   {{#if paginationLinks}}
-    {{ember-interactive-table/pagination-controls
-      modelMetaData=modelMetaData
-      paginationLinks=paginationLinks
-      page=page 
-      size=size
+    <EmberInteractiveTable::PaginationControls 
+      @modelMetaData={{modelMetaData}}
+      @paginationLinks={{paginationLinks}}
+      @page={{page}} 
+      @size={{size}}
       class="margin-bottom-lg"
-    }}
+    />
   {{/if}}
   <div class="data-table-wrapper {{if trashed "viewing-trashed-items"}} {{if deletionPending "deletion-pending"}}">
     <div class="data-table-wrapper-inner">
@@ -72,18 +72,18 @@
     </div>
   </div>
   {{#if paginationLinks}}
-    {{ember-interactive-table/pagination-controls
-      modelMetaData=modelMetaData
-      paginationLinks=paginationLinks
-      page=page 
-      size=size
-      class="margin-top-lg"
-    }}
+    <EmberInteractiveTable::PaginationControls 
+        @modelMetaData={{modelMetaData}}
+        @paginationLinks={{paginationLinks}}
+        @page={{page}} 
+        @size={{size}}
+        class="margin-top-lg"
+      />
   {{/if}}
 {{else}}
   {{#ember-sundries/in-page-alert type="info" data-test-id="no-items-notice"}}
     {{#if filtersActive}}
-      Your selected filters don"t match any {{pluralRecordName}}. Please update your filter settings, or click <b>Clear filters</b> above.
+      Your selected filters don't match any {{pluralRecordName}}. Please update your filter settings, or click <b>Clear filters</b> above.
     {{else}}
       You have no {{pluralRecordName}} to display yet.
     {{/if}}
