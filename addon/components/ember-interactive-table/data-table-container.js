@@ -102,6 +102,24 @@ export default Component.extend({
         type: flashType,
         message: flashMessage
       });
-    }
+    },
+
+    onCheckboxClick(value, event, item) {
+      if (event.shiftKey) {
+        if (this.lastSelectedItem) {
+          const items = this.get('model.items');
+          const selectedIndex = items.indexOf(item);
+          const lastSelectedIndex = items.indexOf(this.lastSelectedItem);
+          let itemsToSelect = []
+          if (lastSelectedIndex > selectedIndex) {
+            itemsToSelect = items.slice(selectedIndex, lastSelectedIndex);
+          } else {
+            itemsToSelect = items.slice(lastSelectedIndex, selectedIndex);
+          }
+          itemsToSelect.setEach('selected', true);
+        }
+      }
+      this.set('lastSelectedItem', item);
+    },
   }
 });

@@ -1,6 +1,6 @@
 {
   "name": "ember-interactive-table",
-  "version": "0.3.17",
+  "version": "0.3.18",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon"
@@ -51,7 +51,7 @@
     "eslint-plugin-node": "^7.0.1",
     "loader.js": "^4.7.0",
     "qunit-dom": "^0.8.0",
-    "tag-and-release": "^1.0.12"
+    "tag-and-release": "^1.0.16"
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"

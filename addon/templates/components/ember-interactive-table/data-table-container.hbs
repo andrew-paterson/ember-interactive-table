@@ -9,48 +9,50 @@
           {{/each}}
         </div>
       {{/if}}
-      <BasicDropdown 
-        @verticalPosition="below" 
-        @renderInPlace={{true}} 
-        @positionStatic={{true}} 
-        @initiallyOpened={{filtersActive}} as |Dropdown|>
-        <Dropdown.Trigger>
-          <button class={{or filtersTriggerClass "btn btn-outline-primary"}} data-test-id="toggle-filters-button">
-            {{#if Dropdown.isOpen}}
-              {{svg-repo/icons/icon-cross}}Hide Filters
-            {{else}}
-              {{svg-repo/icons/icon-filter}}Show Filters
-            {{/if}}
-          </button>
-        </Dropdown.Trigger>
-        <Dropdown.Content class="filter-controls body-content position-static">
-          <div class="pop-up-box box-arrow">
-            {{#if filtersActive}}
-              <div class="filtering-results">
-                {{svg-repo/icons/icon-asterisk class="filters-active-icon bg-primary"}} Filters are active ({{modelMetaData.filtered_data_length}} {{ember-skeleton/custom-inflector modelMetaData.filtered_data_length singular=singleRecordName plural=pluralRecordName}} returned).
-              </div>
-            {{/if}}
-            {{#if filterFormSchema}}
-              <ChangesetWebform
-                @formSchema={{filterFormSchema}}
-                @submitAction={{applyFilters}}
-                @beforeReset={{clearAllFilters}}
-                @afterFieldEdit={{filterFieldChanged}}
-                @data={{filterProps}}
-                data-test-id="filters-form"
-              />
-            {{else}}
-              {{component filtersComponent
-                applyFilters=applyFilters
-                clearAllFilters=clearAllFilters
-                afterFieldEdit=filterFieldChanged
-                data=filterProps
-                filterFormSchema=filterFormSchema
-              }}
-            {{/if}}
-          </div>
-        </Dropdown.Content>
-      </BasicDropdown>
+      {{#if model.length}}
+        <BasicDropdown 
+          @verticalPosition="below" 
+          @renderInPlace={{true}} 
+          @positionStatic={{true}} 
+          @initiallyOpened={{filtersActive}} as |Dropdown|>
+          <Dropdown.Trigger>
+            <button class={{or filtersTriggerClass "btn btn-outline-primary"}} data-test-id="toggle-filters-button">
+              {{#if Dropdown.isOpen}}
+                {{svg-repo/icons/icon-cross}}Hide Filters
+              {{else}}
+                {{svg-repo/icons/icon-filter}}Show Filters
+              {{/if}}
+            </button>
+          </Dropdown.Trigger>
+          <Dropdown.Content class="filter-controls body-content position-static">
+            <div class="pop-up-box box-arrow">
+              {{#if filtersActive}}
+                <div class="filtering-results">
+                  {{svg-repo/icons/icon-asterisk class="filters-active-icon bg-primary"}} Filters are active ({{modelMetaData.filtered_data_length}} {{ember-skeleton/custom-inflector modelMetaData.filtered_data_length singular=singleRecordName plural=pluralRecordName}} returned).
+                </div>
+              {{/if}}
+              {{#if filterFormSchema}}
+                <ChangesetWebform
+                  @formSchema={{filterFormSchema}}
+                  @submitAction={{applyFilters}}
+                  @beforeReset={{clearAllFilters}}
+                  @afterFieldEdit={{filterFieldChanged}}
+                  @data={{filterProps}}
+                  data-test-id="filters-form"
+                />
+              {{else}}
+                {{component filtersComponent
+                  applyFilters=applyFilters
+                  clearAllFilters=clearAllFilters
+                  afterFieldEdit=filterFieldChanged
+                  data=filterProps
+                  filterFormSchema=filterFormSchema
+                }}
+              {{/if}}
+            </div>
+          </Dropdown.Content>
+        </BasicDropdown>
+      {{/if}}
     </div>
   {{/if}}
   {{yield (hash aboveTable=(component "blank-template"))}}
