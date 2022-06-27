@@ -9,7 +9,7 @@
           {{/each}}
         </div>
       {{/if}}
-      {{#if model.length}}
+      {{#if (gt model.meta.total_data_length 0)}}
         <BasicDropdown 
           @verticalPosition="below" 
           @renderInPlace={{true}} 
