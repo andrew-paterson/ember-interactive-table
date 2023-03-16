@@ -3,13 +3,13 @@
     max-width: 1030px;
     padding: 0;
   }
-  .form-section {
-    padding: 0;
-    &.form-fields {
+  // .form-section {
+    .form-fields {
+      padding: $spacer-lg;
       display: inline-flex;
       flex-wrap: wrap;
       padding-right: 0;
-      .ember-changeset-webforms-field {
+      .cwf-field {
         // min-width: calc(33.3% - 24px);
         margin: $spacer-lg;
         
@@ -32,16 +32,16 @@
         }
       }
     }
-    &.form-submit {
+    .form-actions {
       background: #eee;
       display: flex;
       justify-content: flex-end;
       padding: $spacer-lg;
-      .form-submit-button {
+      .cwf-form-submit-button {
         margin-right: $spacer-lg;
       }
     }
-  }
+  // }
 
   .filtering-results {
     display: inline-flex;
