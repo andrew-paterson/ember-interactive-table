@@ -6,7 +6,8 @@ export default Component.extend({
   layout,
   tagName: 'button',
   classNames: ['expand-collapse-button', 'btn-content'],
-  'data-test-class': 'eit-expand-collapse-row-button',
+  attributeBindings: ['dataTestClass:data-test-class'],
+  dataTestClass: 'eit-expand-collapse-row-button',
   click() {
     this.toggleExpanded();
   },
