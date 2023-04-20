@@ -7,7 +7,7 @@ export default Controller.extend({
   init() {
     this._super(...arguments);
     if (this.get('queryParamsArray')) {
-      this.queryParams = this.get('queryParamsArray.items').map(item => { return item.qpKey || item.key; });
+      this.queryParams = (this.queryParams || []).concat(this.get('queryParamsArray.items').map(item => { return item.qpKey || item.key; }) || []);
       this.send('applyDefaults');
       var queryParamsName = this.get('queryParamsArray.name');
       this.set(`emberInteractiveTable.${queryParamsName}`, this.get('queryParamsArray.items'));
@@ -58,7 +58,9 @@ export default Controller.extend({
         value = (value || []).length === 0 ? null : value;
         this.set(key, value);
       }
-      this.send('refreshModel');
+      setTimeout(() => { // TODO undesirable
+        this.send('refreshModel');
+      })
     },
   }
 });
