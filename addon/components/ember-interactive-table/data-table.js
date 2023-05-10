@@ -3,8 +3,7 @@ import layout from '../../templates/components/ember-interactive-table/data-tabl
 
 export default Component.extend({
   layout,
-  tagName: "table",
-  classNames: ['data-table'],
+  tagName: "",
 
   actions: {
     selectAll: function(prop, value) {

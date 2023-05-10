@@ -5,9 +5,9 @@ import layout from '../../templates/components/ember-interactive-table/data-tabl
 import isEmptyObject from 'ember-interactive-table/utils/is-empty-object';
 
 export default Component.extend({
+  tagName: "",
   layout,
   emberSkeleton: service(),
-  classNames: ['width-100', 'overflow-x-auto'],
 
   didInsertElement() {
     if (!this.get('singleRecordName')) {

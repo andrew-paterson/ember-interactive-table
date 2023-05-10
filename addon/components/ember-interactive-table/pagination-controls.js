@@ -4,9 +4,7 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   layout,
-  tagName: 'div',
-  classNames: ['table-pagination'],
-  classNameBindings: ['class'],
+  tagName: "",
 
   paginationObject: computed('paginationLinks', function() {
     var paginationLinks = this.get('paginationLinks');

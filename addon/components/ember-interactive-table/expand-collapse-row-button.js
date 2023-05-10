@@ -4,13 +4,8 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   layout,
-  tagName: 'button',
-  classNames: ['expand-collapse-button', 'btn-content'],
-  attributeBindings: ['dataTestClass:data-test-class'],
+  tagName: "",
   dataTestClass: 'eit-expand-collapse-row-button',
-  click() {
-    this.toggleExpanded();
-  },
 
   expandCollapseIcon: computed('expanded', function() {
     var icon = this.expanded ? 'svg-repo/icons/icon-arrow-up' : 'svg-repo/icons/icon-arrow-down';
@@ -21,5 +16,9 @@ export default Component.extend({
     return this.expanded ? this.get('hideText') : this.get('showText');
   }),
 
-
+  actions: {
+    toggleExpanded() {
+      this.toggleExpanded();
+    },
+  }
 });
