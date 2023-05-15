@@ -13,7 +13,7 @@ export default Component.extend({
   }),
 
   expandCollapseText: computed('showText', 'hideText', function() {
-    return this.expanded ? this.get('hideText') : this.get('showText');
+    return this.expanded ? this.hideText : this.showText;
   }),
 
   actions: {

@@ -10,11 +10,11 @@ export default Component.extend({
   emberSkeleton: service(),
 
   didInsertElement() {
-    if (!this.get('singleRecordName')) {
+    if (!this.singleRecordName) {
       this.set('singleRecordName', 'item');
     } 
-    if (!this.get('pluralRecordName')) {
-      this.set('pluralRecordName', `${this.get('singleRecordName')}s`);
+    if (!this.pluralRecordName) {
+      this.set('pluralRecordName', `${this.singleRecordName}s`);
     }
   },
 
@@ -43,16 +43,16 @@ export default Component.extend({
   }),
 
   modelMetaData: computed('model', 'model.@each', function() {
-    return this.get('model.meta');
+    return this.model.meta;
   }),
 
   paginationLinks: computed('model', function() {
-    if (isEmptyObject(this.get('model.links'))) { return; }
-    return this.get('model.links');
+    if (isEmptyObject(this.model.links)) { return; }
+    return this.model.links;
   }),
 
   filtersActive: computed('model.meta', function() {
-    return this.get('model.meta.filtered_data_length') < this.get('model.meta.total_data_length');
+    return this.model.meta.filtered_data_length < this.model.meta.total_data_length;
   }),
 
   actions: {
@@ -107,7 +107,7 @@ export default Component.extend({
     onCheckboxClick(value, event, item) {
       if (event.shiftKey) {
         if (this.lastSelectedItem) {
-          const items = this.get('model.items');
+          const items = this.model.items;
           const selectedIndex = items.indexOf(item);
           const lastSelectedIndex = items.indexOf(this.lastSelectedItem);
           let itemsToSelect = []

@@ -7,7 +7,7 @@ export default Component.extend({
   tagName: "",
 
   paginationObject: computed('paginationLinks', function() {
-    var paginationLinks = this.get('paginationLinks');
+    var paginationLinks = this.paginationLinks;
     if (!paginationLinks) { return; }
     var paginationObject = {};
     for (var key in paginationLinks) {
@@ -33,11 +33,11 @@ export default Component.extend({
   }),
 
   pageSize: computed('modelMetaData', 'paginationObject', function() {
-    var pageSize = parseInt(this.get('paginationObject.size'));
-    var maxPageSize = this.get('modelMetaData.max_page_size');
-    var minPageSize = this.get('modelMetaData.min_page_size');
-    var pageSizeIsMax = this.get('modelMetaData.page_size_is_max');
-    var pageSizeIsMin = this.get('modelMetaData.page_size_is_min');
+    var pageSize = parseInt(this.paginationObject.size);
+    var maxPageSize = this.modelMetaData.max_page_size;
+    var minPageSize = this.modelMetaData.min_page_size;
+    var pageSizeIsMax = this.modelMetaData.page_size_is_max;
+    var pageSizeIsMin = this.modelMetaData.page_size_is_min;
     var final = {
       current: pageSize
     };
