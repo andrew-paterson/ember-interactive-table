@@ -6,21 +6,25 @@ export default Component.extend({
   tagName: '',
 
   actions: {
-    toggleExpanded: function() {
+    toggleExpanded: function () {
       this.toggleProperty('expanded');
     },
 
-    toggleSelected: function(item, value, event) {
+    toggleSelected: function (item, value, event) {
       if (!item) {
-        console.warn('You have not passed a model to the @record property of the DataTableRow component. This must be passed so that the component knows what to toggle the selected state of.');
+        console.warn(
+          'You have not passed a model to the @record property of the DataTableRow component. This must be passed so that the component knows what to toggle the selected state of.'
+        );
         return;
       }
-      item.toggleProperty("selected");
-      if (!this.onSelect) { 
-        console.warn('Please pass an action as the onSelect property of data-table-row in order to react to table row selection.')
-        return; 
+      item.toggleProperty('selected');
+      if (!this.onSelect) {
+        console.warn(
+          'Please pass an action as the onSelect property of data-table-row in order to react to table row selection.'
+        );
+        return;
       }
       this.onSelect(value, event, item);
     },
-  }
+  },
 });

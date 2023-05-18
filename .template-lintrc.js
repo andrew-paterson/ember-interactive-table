@@ -1,5 +1,8 @@
 'use strict';
 
 module.exports = {
-  extends: 'recommended'
+  // extends: 'recommended',
+  'no-implicit-this': {
+    allow: ['ember-interactive-table/odd-or-even'],
+  },
 };

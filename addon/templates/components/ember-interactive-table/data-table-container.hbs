@@ -1,39 +1,39 @@
 <div class="width-100 overflow-x-auto" ...attributes>
-  <div class={{concat "above-table" " " aboveTableClass}}>
-    {{#if (or filtersComponent filterFormSchema)}}
+  <div class={{concat "above-table" " " @aboveTableClass}}>
+    {{#if (or @filtersComponent @filterFormSchema)}}
       <div class="margin-bottom-lg sort-filter">
-        {{#if sortParams.sortProps}}
+        {{#if @sortParams.sortProps}}
           <div class="sorting-controls flex margin-bottom-lg">
             <h3 class="margin-right-lg">Sort by: </h3>
-            {{#each sortParams.sortProps as |propName|}}
+            {{#each @sortParams.sortProps as |propName|}}
               <a
                 {{action
-                  setSortParams
+                  @setSortParams
                   propName
-                  (or defaultSortDirection "asc")
+                  (or @defaultSortDirection "asc")
                 }}
                 class="margin-right-lg btn btn-outline-gray-medium"
               >{{propName}}</a>
             {{/each}}
           </div>
         {{/if}}
-        {{#if (gt model.meta.total_data_length 0)}}
+        {{#if (gt @model.meta.total_data_length 0)}}
           <BasicDropdown
             @verticalPosition="below"
             @renderInPlace={{true}}
             @positionStatic={{true}}
-            @initiallyOpened={{filtersActive}}
+            @initiallyOpened={{this.filtersActive}}
             as |Dropdown|
           >
             <Dropdown.Trigger>
               <button
-                class={{or filtersTriggerClass "btn btn-outline-primary"}}
+                class={{or @filtersTriggerClass "btn btn-outline-primary"}}
                 data-test-id="toggle-filters-button"
               >
                 {{#if Dropdown.isOpen}}
-                  {{svg-repo/icons/icon-cross}}Hide Filters
+                  {{@svg-repo/icons/icon-cross}}Hide Filters
                 {{else}}
-                  {{svg-repo/icons/icon-filter}}Show Filters
+                  {{@svg-repo/icons/icon-filter}}Show Filters
                 {{/if}}
               </button>
             </Dropdown.Trigger>
@@ -41,37 +41,37 @@
               class="filter-controls body-content position-static"
             >
               <div class="pop-up-box box-arrow">
-                {{#if filtersActive}}
+                {{#if this.filtersActive}}
                   <div class="filtering-results">
                     {{svg-repo/icons/icon-asterisk
                       class="filters-active-icon bg-primary"
                     }}
-                    Filters are active ({{modelMetaData.filtered_data_length}}
+                    Filters are active ({{this.modelMetaData.filtered_data_length}}
                     {{ember-skeleton/custom-inflector
-                      modelMetaData.filtered_data_length
-                      singular=singleRecordName
-                      plural=pluralRecordName
+                      this.modelMetaData.filtered_data_length
+                      singular=this.singleRecordName
+                      plural=this.pluralRecordName
                     }}
                     returned).
                   </div>
                 {{/if}}
-                {{#if filterFormSchema}}
+                {{#if @filterFormSchema}}
                   <ChangesetWebform
-                    @formSchema={{filterFormSchema}}
-                    @submitAction={{applyFilters}}
-                    @beforeReset={{clearAllFilters}}
-                    @afterFieldEdit={{filterFieldChanged}}
-                    @data={{filterProps}}
+                    @formSchema={{@filterFormSchema}}
+                    @submitAction={{@applyFilters}}
+                    @beforeReset={{@clearAllFilters}}
+                    @afterFieldEdit={{@filterFieldChanged}}
+                    @data={{@filterProps}}
                     data-test-id="filters-form"
                   />
                 {{else}}
                   {{component
-                    filtersComponent
-                    applyFilters=applyFilters
-                    clearAllFilters=clearAllFilters
-                    afterFieldEdit=filterFieldChanged
-                    data=filterProps
-                    filterFormSchema=filterFormSchema
+                    @filtersComponent
+                    applyFilters=@applyFilters
+                    clearAllFilters=@clearAllFilters
+                    afterFieldEdit=@filterFieldChanged
+                    data=@filterProps
+                    filterFormSchema=@filterFormSchema
                   }}
                 {{/if}}
               </div>
@@ -83,44 +83,44 @@
     {{yield (hash aboveTable=(component "blank-template"))}}
   </div>
 
-  {{#if model}}
-    {{#if paginationLinks}}
+  {{#if @model}}
+    {{#if this.paginationLinks}}
       <EmberInteractiveTable::PaginationControls
-        @modelMetaData={{modelMetaData}}
-        @paginationLinks={{paginationLinks}}
-        @page={{page}}
-        @size={{size}}
+        @modelMetaData={{this.modelMetaData}}
+        @paginationLinks={{this.paginationLinks}}
+        @page={{@page}}
+        @size={{@size}}
         class="margin-bottom-lg"
       />
     {{/if}}
     <div
       class="data-table-wrapper
-        {{if trashed 'viewing-trashed-items'}}
-        {{if deletionPending 'deletion-pending'}}"
+        {{if @trashed 'viewing-trashed-items'}}
+        {{if @deletionPending 'deletion-pending'}}"
     >
       <div class="data-table-wrapper-inner">
         {{yield (hash tableComponent=(component "blank-template"))}}
       </div>
     </div>
-    {{#if paginationLinks}}
+    {{#if this.paginationLinks}}
       <EmberInteractiveTable::PaginationControls
-        @modelMetaData={{modelMetaData}}
-        @paginationLinks={{paginationLinks}}
-        @page={{page}}
-        @size={{size}}
+        @modelMetaData={{this.modelMetaData}}
+        @paginationLinks={{this.paginationLinks}}
+        @page={{@page}}
+        @size={{@size}}
         class="margin-top-lg"
       />
     {{/if}}
   {{else}}
     {{#ember-sundries/in-page-alert type="info" data-test-id="no-items-notice"}}
-      {{#if filtersActive}}
+      {{#if this.filtersActive}}
         Your selected filters don't match any
-        {{pluralRecordName}}. Please update your filter settings, or click
+        {{this.pluralRecordName}}. Please update your filter settings, or click
         <b>Clear filters</b>
         above.
       {{else}}
         You have no
-        {{pluralRecordName}}
+        {{this.pluralRecordName}}
         to display yet.
       {{/if}}
     {{/ember-sundries/in-page-alert}}

@@ -4,10 +4,10 @@
   class="expand-collapse-button btn-content"
   ...attributes
 >
-  {{#let (component expandCollapseIcon) as |ExpandCollapseIcon|}}
+  {{#let (component this.expandCollapseIcon) as |ExpandCollapseIcon|}}
     <ExpandCollapseIcon
-      class={{concat "fill-gray-light" (if expandCollapseText " margin-right")}}
+      class={{concat "fill-gray-light" (if this.expandCollapseText " margin-right")}}
     />
   {{/let}}
-  {{expandCollapseText}}
+  {{this.expandCollapseText}}
 </button>
