@@ -1,6 +1,13 @@
-<button onclick={{action "toggleExpanded"}} data-test-class={{this.dataTestClass}} class="expand-collapse-button btn-content" ...attributes>
+<button
+  onclick={{action "toggleExpanded"}}
+  data-test-class={{this.dataTestClass}}
+  class="expand-collapse-button btn-content"
+  ...attributes
+>
   {{#let (component expandCollapseIcon) as |ExpandCollapseIcon|}}
-    <ExpandCollapseIcon class={{concat "fill-gray-light" (if expandCollapseText " margin-right")}} />
+    <ExpandCollapseIcon
+      class={{concat "fill-gray-light" (if expandCollapseText " margin-right")}}
+    />
   {{/let}}
   {{expandCollapseText}}
 </button>

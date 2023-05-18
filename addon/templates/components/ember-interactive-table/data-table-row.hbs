@@ -1,28 +1,45 @@
-<tr class="{{ember-interactive-table/odd-or-even index}}" data-test-class="eit-data-table-row" data-test-id="{{dataTestId}}">
+<tr
+  class="{{ember-interactive-table/odd-or-even index}}"
+  data-test-class="eit-data-table-row"
+  data-test-id="{{dataTestId}}"
+>
   {{#unless hideExpandCollapse}}
     <td class="expand-collapse-cell">
-      {{ember-interactive-table/expand-collapse-row-button expanded=expanded toggleExpanded=(action "toggleExpanded")}}
+      {{ember-interactive-table/expand-collapse-row-button
+        expanded=expanded
+        toggleExpanded=(action "toggleExpanded")
+      }}
     </td>
   {{/unless}}
   {{#unless hideSelectRow}}
-    <td class="select"><EmberSundries::LabelledCheckbox @changedAction={{action "toggleSelected" record}} @value={{record.selected}} /></td>
+    <td class="select"><EmberSundries::LabelledCheckbox
+        @changedAction={{action "toggleSelected" record}}
+        @value={{record.selected}}
+      /></td>
   {{/unless}}
   {{yield (hash mainRow=(component "blank-template" tagName=""))}}
 </tr>
 {{#if expanded}}
-  <tr class="data-table-row-expanded {{ember-interactive-table/odd-or-even index}}" data-test-class="eit-data-table-row-extended">
+  <tr
+    class="data-table-row-expanded
+      {{ember-interactive-table/odd-or-even index}}"
+    data-test-class="eit-data-table-row-extended"
+  >
     <td colspan="1000">
       <div class="flex flex-align-start">
-        {{ember-interactive-table/expand-collapse-row-button 
+        {{ember-interactive-table/expand-collapse-row-button
           class="margin-right-lg"
-          expanded=expanded 
+          expanded=expanded
           toggleExpanded=(action "toggleExpanded")
         }}
         <div class="data-table-row-expanded-content flex-expand">
           {{yield (hash expandedRow=(component "blank-template" tagName=""))}}
         </div>
-        <button class="btn-content hide-details-icon close-button" onclick={{action "toggleExpanded"}}>
-          {{svg-repo/icons/icon-cross }}
+        <button
+          class="btn-content hide-details-icon close-button"
+          onclick={{action "toggleExpanded"}}
+        >
+          {{svg-repo/icons/icon-cross}}
         </button>
       </div>
     </td>
