@@ -43,9 +43,10 @@
               <div class="pop-up-box box-arrow">
                 {{#if this.filtersActive}}
                   <div class="filtering-results">
-                    {{svg-repo/icons/icon-asterisk
+                    <SvgRepo::Icons::IconAsterisk
                       class="filters-active-icon bg-primary"
-                    }}
+                    />
+
                     Filters are active ({{this.modelMetaData.filtered_data_length}}
                     {{ember-skeleton/custom-inflector
                       this.modelMetaData.filtered_data_length
