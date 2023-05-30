@@ -6,20 +6,20 @@
         class="incrementing-arrow-double left-right margin-right-md btn-content"
         title="First"
         data-test-class="eit-pagination-first"
-      >{{@svg-repo/icons/icon-arrow-left-double}}</button>
+      ><SvgRepo::Icons::IconArrowLeftDouble /></button>
       <button
         onclick={{action (mut @page) this.paginationObject.prev.number}}
         class="incrementing-arrow left-right right margin-right-md btn-content"
         title="Previous"
         data-test-class="eit-pagination-prev"
-      >{{@svg-repo/icons/icon-arrow-left}}</button>
+      ><SvgRepo::Icons::IconArrowLeft /></button>
     {{/if}}
     <div class="page-number-input" data-test-class="eit-pagination-page-number">
       Page
-      {{input
-        value=(readonly this.paginationObject.self.number)
-        change=(action (action (mut @page)) value="target.value")
-      }}
+      <input
+        value={{readonly this.paginationObject.self.number}}
+        {{on "change" (action (mut @page) value="target.value")}}
+      />
       of
       {{this.paginationObject.last.number}}
     </div>
@@ -29,13 +29,13 @@
         class="incrementing-arrow left-right margin-left-md btn-content"
         title="Next"
         data-test-class="eit-pagination-next"
-      >{{@svg-repo/icons/icon-arrow-right}}</button>
+      ><SvgRepo::Icons::IconArrowRight /></button>
       <button
         onclick={{action (mut @page) this.paginationObject.last.number}}
         class="incrementing-arrow-double left-right margin-left-md btn-content"
         title="Last"
         data-test-class="eit-pagination-last"
-      >{{@svg-repo/icons/icon-arrow-right-double}}</button>
+      ><SvgRepo::Icons::IconArrowRightDouble /></button>
     {{/if}}
   </div>
   <div class="page-size">
@@ -45,21 +45,21 @@
         class="incrementing-arrow up-down up btn-content"
         title="Next"
         data-test-class="eit-pagination-increase-page-size"
-      >{{@svg-repo/icons/icon-arrow-up}}</button>
+      ><SvgRepo::Icons::IconArrowUp /></button>
       <button
         onclick={{action (mut @size) this.pageSize.nextDown}}
         class="incrementing-arrow up-down down btn-content"
         title="Last"
         data-test-class="eit-pagination-decrease-page-size"
-      >{{@svg-repo/icons/icon-arrow-down}}</button>
+      ><SvgRepo::Icons::IconArrowDown /></button>
     </div>
     <span
       class="page-size"
       data-test-class="eit-pagination-current-page-size"
-    >{{input
-        value=(readonly this.pageSize.current)
-        change=(action (action (mut @size)) value="target.value")
-      }}</span>
+    ><input
+        value={{readonly this.pageSize.current}}
+        {{on "change" (action (mut @size) value="target.value")}}
+      /></span>
     items per page
   </div>
 </div>
