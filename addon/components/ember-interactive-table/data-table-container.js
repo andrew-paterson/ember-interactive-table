@@ -1,91 +1,114 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { inject as service } from '@ember/service';
 import layout from '../../templates/components/ember-interactive-table/data-table-container';
 import isEmptyObject from 'ember-interactive-table/utils/is-empty-object';
 
 export default Component.extend({
-  tagName: "",
+  tagName: '',
   layout,
-  emberSkeleton: service(),
 
-  didInsertElement() {
-    if (!this.singleRecordName) {
-      this.set('singleRecordName', 'item');
-    } 
-    if (!this.pluralRecordName) {
-      this.set('pluralRecordName', `${this.singleRecordName}s`);
-    }
-  },
-
-  title: computed('trashed', 'pageTitle', function() {
+  title: computed('trashed', 'pageTitle', function () {
     return this.trashed ? `${this.pageTitle} | TRASH` : this.pageTitle;
   }),
 
-  itemsSelected: computed('model.@each.selected', function() {
-    return this.model.filter(item => item.selected === true).length > 0;
+  itemsSelected: computed('model.@each.selected', function () {
+    return this.model.filter((item) => item.selected === true).length > 0;
   }),
 
-  deleteRestoreButtonMode: computed('trashed', function() {
+  deleteRestoreButtonMode: computed('trashed', function () {
     return this.trashed ? 'restore' : 'delete';
   }),
 
-  deleteRestoreButtonIcon: computed('trashed', function() {
-    return this.trashed ? 'svg-repo/icons/icon-processing' : 'svg-repo/icons/icon-trash';
+  deleteRestoreButtonIcon: computed('trashed', function () {
+    return this.trashed
+      ? 'svg-repo/icons/icon-processing'
+      : 'svg-repo/icons/icon-trash';
   }),
 
-  toggleTrashViewButtonText: computed('trashed', function() {
+  toggleTrashViewButtonText: computed('trashed', function () {
     return this.trashed ? 'Exit Trash' : 'View Trash';
   }),
 
-  toggleTrashViewButtonIcon: computed('trashed', function() {
-    return this.trashed ? 'svg-repo/icons/icon-cross' : 'svg-repo/icons/icon-trash';
+  toggleTrashViewButtonIcon: computed('trashed', function () {
+    return this.trashed
+      ? 'svg-repo/icons/icon-cross'
+      : 'svg-repo/icons/icon-trash';
   }),
 
-  modelMetaData: computed('model', 'model.@each', function() {
+  modelMetaData: computed('model', 'model.@each', function () {
     return this.model.meta;
   }),
 
-  paginationLinks: computed('model', function() {
-    if (isEmptyObject(this.model.links)) { return; }
+  paginationLinks: computed('model', function () {
+    if (isEmptyObject(this.model.links)) {
+      return;
+    }
     return this.model.links;
   }),
 
-  filtersActive: computed('model.meta', function() {
-    return this.model.meta.filtered_data_length < this.model.meta.total_data_length;
+  filtersActive: computed('model.meta', function () {
+    return (
+      this.model.meta.filtered_data_length < this.model.meta.total_data_length
+    );
   }),
 
   actions: {
-    selectAll: function(prop, value) {
+    didInsert() {
+      if (!this.singleRecordName) {
+        this.set('singleRecordName', 'item');
+      }
+      if (!this.pluralRecordName) {
+        this.set('pluralRecordName', `${this.singleRecordName}s`);
+      }
+    },
+
+    selectAll: function (prop, value) {
       this.model.setEach(prop, value);
     },
 
     deleteOrRestoreSelected(mode) {
-      var selectedItems = this.model.filter(item => item.selected === true);
+      var selectedItems = this.model.filter((item) => item.selected === true);
       var counter = {
         success: 0,
-        fail: 0
+        fail: 0,
       };
-      selectedItems.forEach(function(item) {
+      selectedItems.forEach(function (item) {
         var deleted = mode === 'delete' ? true : false;
         item.set('deleted', deleted);
-        item.toggleDeleted().then(() => {
-          counter.success++;
-          if (counter.success + counter.fail === selectedItems.length) {
-            this.send('deleteOrRestoreResponseMessage', mode, counter, selectedItems.length);
-            this.refreshModel();
-          }
-        }).catch(() => {
-          counter.fail++;
-          if (counter.success + counter.fail === selectedItems.length) {
-            this.send('deleteOrRestoreResponseMessage', mode, counter, selectedItems.length);
-            this.refreshModel();
-          }
-        });
+        item
+          .toggleDeleted()
+          .then(() => {
+            counter.success++;
+            if (counter.success + counter.fail === selectedItems.length) {
+              this.send(
+                'deleteOrRestoreResponseMessage',
+                mode,
+                counter,
+                selectedItems.length
+              );
+              this.refreshModel();
+            }
+          })
+          .catch(() => {
+            counter.fail++;
+            if (counter.success + counter.fail === selectedItems.length) {
+              this.send(
+                'deleteOrRestoreResponseMessage',
+                mode,
+                counter,
+                selectedItems.length
+              );
+              this.refreshModel();
+            }
+          });
       });
     },
 
-    deleteOrRestoreResponseMessage: function(mode, counter, selectedItemsLength) {
+    deleteOrRestoreResponseMessage: function (
+      mode,
+      counter,
+      selectedItemsLength
+    ) {
       var flashType;
       var flashMessage;
       if (counter.success === selectedItemsLength) {
@@ -100,7 +123,7 @@ export default Component.extend({
       }
       this.flashMessages.add({
         type: flashType,
-        message: flashMessage
+        message: flashMessage,
       });
     },
 
@@ -110,7 +133,7 @@ export default Component.extend({
           const items = this.model.items;
           const selectedIndex = items.indexOf(item);
           const lastSelectedIndex = items.indexOf(this.lastSelectedItem);
-          let itemsToSelect = []
+          let itemsToSelect = [];
           if (lastSelectedIndex > selectedIndex) {
             itemsToSelect = items.slice(selectedIndex, lastSelectedIndex);
           } else {
@@ -121,5 +144,5 @@ export default Component.extend({
       }
       this.set('lastSelectedItem', item);
     },
-  }
+  },
 });

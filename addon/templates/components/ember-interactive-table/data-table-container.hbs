@@ -1,4 +1,4 @@
-<div class="width-100 overflow-x-auto" ...attributes>
+<div class="width-100 overflow-x-auto"  {{did-insert (action "didInsert")}} ...attributes>
   <div class={{concat "above-table" " " @aboveTableClass}}>
     {{#if (or @filtersComponent @filterFormSchema)}}
       <div class="margin-bottom-lg sort-filter">
@@ -116,9 +116,7 @@
     {{#ember-sundries/in-page-alert type="info" data-test-id="no-items-notice"}}
       {{#if this.filtersActive}}
         Your selected filters don't match any
-        {{this.pluralRecordName}}. Please update your filter settings, or click
-        <b>Clear filters</b>
-        above.
+        {{this.pluralRecordName}}. Please update your filter settings.
       {{else}}
         You have no
         {{this.pluralRecordName}}
