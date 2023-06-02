@@ -14,7 +14,7 @@
   {{/unless}}
   {{#unless @hideSelectRow}}
     <td class="select"><EmberSundries::LabelledCheckbox
-        @changedAction={{action "toggleSelected" @record}}
+        @changedAction={{fn (action "toggleSelected") @record}}
         @value={{@record.selected}}
       /></td>
   {{/unless}}
@@ -38,7 +38,7 @@
         </div>
         <button
           class="btn-content hide-details-icon close-button"
-          onclick={{action "toggleExpanded"}}
+          {{on "click" (action "toggleExpanded")}}
         >
           {{@svg-repo/icons/icon-cross}}
         </button>

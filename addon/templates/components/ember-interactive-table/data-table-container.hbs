@@ -1,4 +1,8 @@
-<div class="width-100 overflow-x-auto"  {{did-insert (action "didInsert")}} ...attributes>
+<div
+  class="width-100 overflow-x-auto"
+  {{did-insert (action "didInsert")}}
+  ...attributes
+>
   <div class={{concat "above-table" " " @aboveTableClass}}>
     {{#if (or @filtersComponent @filterFormSchema)}}
       <div class="margin-bottom-lg sort-filter">
@@ -7,10 +11,9 @@
             <h3 class="margin-right-lg">Sort by: </h3>
             {{#each @sortParams.sortProps as |propName|}}
               <a
-                {{action
-                  @setSortParams
-                  propName
-                  (or @defaultSortDirection "asc")
+                {{on
+                  "click"
+                  (fn @setSortParams propName (or @defaultSortDirection "asc"))
                 }}
                 class="margin-right-lg btn btn-outline-gray-medium"
               >{{propName}}</a>

@@ -2,13 +2,13 @@
   <div class="page-navigation" data-test-class="eit-pagination">
     {{#if this.paginationObject.prev}}
       <button
-        onclick={{action (mut @page) this.paginationObject.first.number}}
+        {{on "click" (fn (mut @page) this.paginationObject.first.number)}}
         class="incrementing-arrow-double left-right margin-right-md btn-content"
         title="First"
         data-test-class="eit-pagination-first"
       ><SvgRepo::Icons::IconArrowLeftDouble /></button>
       <button
-        onclick={{action (mut @page) this.paginationObject.prev.number}}
+        {{on "click" (fn (mut @page) this.paginationObject.prev.number)}}
         class="incrementing-arrow left-right right margin-right-md btn-content"
         title="Previous"
         data-test-class="eit-pagination-prev"
@@ -25,13 +25,13 @@
     </div>
     {{#if this.paginationObject.next}}
       <button
-        onclick={{action (mut @page) this.paginationObject.next.number}}
+        {{on "click" (fn (mut @page) this.paginationObject.next.number)}}
         class="incrementing-arrow left-right margin-left-md btn-content"
         title="Next"
         data-test-class="eit-pagination-next"
       ><SvgRepo::Icons::IconArrowRight /></button>
       <button
-        onclick={{action (mut @page) this.paginationObject.last.number}}
+        {{on "click" (fn (mut @page) this.paginationObject.last.number)}}
         class="incrementing-arrow-double left-right margin-left-md btn-content"
         title="Last"
         data-test-class="eit-pagination-last"
@@ -41,13 +41,13 @@
   <div class="page-size">
     <div class="arrows">
       <button
-        onclick={{action (mut @size) this.pageSize.nextUp}}
+        {{on "click" (fn (mut @size) this.pageSize.nextUp)}}
         class="incrementing-arrow up-down up btn-content"
         title="Next"
         data-test-class="eit-pagination-increase-page-size"
       ><SvgRepo::Icons::IconArrowUp /></button>
       <button
-        onclick={{action (mut @size) this.pageSize.nextDown}}
+        {{on "click" (fn (mut @size) this.pageSize.nextDown)}}
         class="incrementing-arrow up-down down btn-content"
         title="Last"
         data-test-class="eit-pagination-decrease-page-size"
