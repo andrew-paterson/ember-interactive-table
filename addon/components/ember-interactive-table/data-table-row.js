@@ -6,6 +6,12 @@ export default Component.extend({
   tagName: '',
 
   actions: {
+    didInsert(element) {
+      if (this.didInsertDataTableRow) {
+        this.didInsertDataTableRow(element);
+      }
+    },
+
     toggleExpanded: function () {
       this.toggleProperty('expanded');
     },

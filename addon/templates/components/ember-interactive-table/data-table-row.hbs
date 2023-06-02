@@ -2,7 +2,7 @@
   class="{{ember-interactive-table/odd-or-even @index}}"
   data-test-class="eit-data-table-row"
   data-test-id="{{@dataTestId}}"
-  {{did-insert this.didInsertDataTableRow}}
+  {{did-insert (action "didInsert")}}
 >
   {{#unless @hideExpandCollapse}}
     <td class="expand-collapse-cell">
