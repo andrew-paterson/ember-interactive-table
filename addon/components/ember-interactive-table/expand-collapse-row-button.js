@@ -12,7 +12,7 @@ export default Component.extend({
     return icon;
   }),
 
-  expandCollapseText: computed('showText', 'hideText', function() {
+  expandCollapseText: computed('expanded', 'hideText', 'showText', function() {
     return this.expanded ? this.hideText : this.showText;
   }),
 

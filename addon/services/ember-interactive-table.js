@@ -1,13 +1,31 @@
 import Service from '@ember/service';
 import _merge from 'lodash/merge';
 import objectFromPath from 'ember-sundries/utils/object-from-path';
+import { get } from '@ember/object';
 
-export default Service.extend({
+export default class EmberInteractiveTableService extends Service {
+  get queryParams() {
+    return {
+      page: {
+        refreshModel: true,
+      },
+      size: {
+        refreshModel: true,
+      },
+      sort: {
+        refreshModel: true,
+      },
+      trashed: {
+        refreshModel: true,
+      }
+    };
+  }
+
   buildQueryParams(params, name) {
-    var queryParamsFilters = this.get(name);
+    var queryParamsFilters = get(this, name);
     var qpObjects = [];
-    queryParamsFilters.forEach(prop => {
-      delete prop.value; 
+    queryParamsFilters.forEach((prop) => {
+      delete prop.value;
       prop = this.getParamValue(params, prop);
       if (prop.testFunction) {
         prop.testFunction(prop, params);
@@ -20,18 +38,17 @@ export default Service.extend({
 
     var final = {};
     var acc = final;
-    qpObjects.forEach(item => {
+    qpObjects.forEach((item) => {
       acc = _merge(acc, item);
     });
     return final;
-  },
+  }
 
   getParamValue(params, prop) {
     var propKey = prop.qpKey || prop.key;
     if (params[propKey]) {
       prop.value = params[propKey];
-    }  
-    else {
+    } else {
       return prop;
     }
     if (prop.type === 'array') {
@@ -44,23 +61,7 @@ export default Service.extend({
           prop.value = null;
         }
       }
-    } 
-    return prop;
-  },
-
-  queryParams: {
-    page: {
-      refreshModel: true
-    },
-    size: {
-      refreshModel: true
-    },
-    sort: {
-      refreshModel: true
-    },
-    trashed: {
-      refreshModel: true
     }
-  },
-
-});
+    return prop;
+  }
+}

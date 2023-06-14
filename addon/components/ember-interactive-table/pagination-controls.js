@@ -32,7 +32,7 @@ export default Component.extend({
     return paginationObject;
   }),
 
-  pageSize: computed('modelMetaData', 'paginationObject', function() {
+  pageSize: computed('modelMetaData.{max_page_size,min_page_size,page_size_is_max,page_size_is_min}', 'paginationObject.size', function() {
     var pageSize = parseInt(this.paginationObject.size);
     var maxPageSize = this.modelMetaData.max_page_size;
     var minPageSize = this.modelMetaData.min_page_size;

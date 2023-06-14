@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { reads } from '@ember/object/computed';
 import layout from '../../templates/components/ember-interactive-table/data-table-container';
 import isEmptyObject from 'ember-interactive-table/utils/is-empty-object';
 
@@ -35,18 +36,16 @@ export default Component.extend({
       : 'svg-repo/icons/icon-trash';
   }),
 
-  modelMetaData: computed('model', 'model.@each', function () {
-    return this.model.meta;
-  }),
+  modelMetaData: reads('model.meta'),
 
-  paginationLinks: computed('model', function () {
+  paginationLinks: computed('model.links', function () {
     if (isEmptyObject(this.model.links)) {
       return;
     }
     return this.model.links;
   }),
 
-  filtersActive: computed('model.meta', function () {
+  filtersActive: computed('model.meta.{filtered_data_length,total_data_length}', function () {
     return (
       this.model.meta.filtered_data_length < this.model.meta.total_data_length
     );
