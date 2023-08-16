@@ -3,16 +3,16 @@ import Mixin from '@ember/object/mixin';
 export default Mixin.create({
   queryParams: {
     page: {
-      refreshModel: true
+      refreshModel: true,
     },
     size: {
-      refreshModel: true
+      refreshModel: true,
     },
     sort: {
-      refreshModel: true
+      refreshModel: true,
     },
     trashed: {
-      refreshModel: true
-    }
+      refreshModel: true,
+    },
   },
 });

@@ -7,17 +7,24 @@ export default Controller.extend({
   init() {
     this._super(...arguments);
     if (this.queryParamsArray) {
-      this.queryParams = (this.queryParams || []).concat(this.queryParamsArray.items.map(item => { return item.qpKey || item.key; }) || []);
+      this.queryParams = (this.queryParams || []).concat(
+        this.queryParamsArray.items.map((item) => {
+          return item.qpKey || item.key;
+        }) || []
+      );
       this.send('applyDefaults');
       var queryParamsName = this.queryParamsArray.name;
-      this.set(`emberInteractiveTable.${queryParamsName}`, this.queryParamsArray.items);
+      this.set(
+        `emberInteractiveTable.${queryParamsName}`,
+        this.queryParamsArray.items
+      );
     }
   },
 
   actions: {
     applyDefaults() {
       var queryParamsArray = this.queryParamsArray || [];
-      queryParamsArray.items.forEach(qpObject => {
+      queryParamsArray.items.forEach((qpObject) => {
         if (Array.isArray(qpObject.defaultValue)) {
           qpObject.defaultValue = qpObject.defaultValue.join(',');
         }
@@ -30,14 +37,17 @@ export default Controller.extend({
       var currentSortFieldName = this.sort.replace('-', '');
       var newSortDirection;
       if (currentSortFieldName === newSortField) {
-        newSortDirection = this.sort.split('')[0] === '-' ? 'asc' : 'desc'; 
+        newSortDirection = this.sort.split('')[0] === '-' ? 'asc' : 'desc';
       } else {
         newSortDirection = defaultDirection;
-      } newSortDirection = newSortDirection.replace('desc', '-').replace('asc', '');
+      }
+      newSortDirection = newSortDirection
+        .replace('desc', '-')
+        .replace('asc', '');
       this.set('sort', `${newSortDirection}${newSortField}`);
-    },  
+    },
 
-    clearAllFilters: function() {
+    clearAllFilters: function () {
       this.send('applyDefaults');
       this.send('refreshModel');
     },
@@ -51,16 +61,17 @@ export default Controller.extend({
           value = value[thisObject.objectKeyPath];
         }
         if (thisObject.arrayObjectKeyPath) {
-          value = (value || []).map(item => {
+          value = (value || []).map((item) => {
             return item[thisObject.arrayObjectKeyPath];
           });
         }
         value = (value || []).length === 0 ? null : value;
         this.set(key, value);
       }
-      setTimeout(() => { // TODO undesirable
+      setTimeout(() => {
+        // TODO undesirable
         this.send('refreshModel');
-      })
+      });
     },
-  }
+  },
 });

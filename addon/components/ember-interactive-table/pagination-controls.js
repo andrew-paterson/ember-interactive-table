@@ -4,18 +4,20 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   layout,
-  tagName: "",
+  tagName: '',
 
-  paginationObject: computed('paginationLinks', function() {
+  paginationObject: computed('paginationLinks', function () {
     var paginationLinks = this.paginationLinks;
-    if (!paginationLinks) { return; }
+    if (!paginationLinks) {
+      return;
+    }
     var paginationObject = {};
     for (var key in paginationLinks) {
       var val = paginationLinks[key];
       var queryParamsString = val.split('?')[1];
       var queryParams = queryParamsString.split('&');
       paginationObject[key] = {};
-      queryParams.forEach(function(keyValuePair) {
+      queryParams.forEach(function (keyValuePair) {
         const [param, value] = keyValuePair.split('=');
         if (param === 'page%5Bnumber%5D') {
           if (value) {
@@ -32,14 +34,14 @@ export default Component.extend({
     return paginationObject;
   }),
 
-  pageSize: computed('modelMetaData', 'paginationObject', function() {
+  pageSize: computed('modelMetaData', 'paginationObject', function () {
     var pageSize = parseInt(this.paginationObject.size);
     var maxPageSize = this.modelMetaData.max_page_size;
     var minPageSize = this.modelMetaData.min_page_size;
     var pageSizeIsMax = this.modelMetaData.page_size_is_max;
     var pageSizeIsMin = this.modelMetaData.page_size_is_min;
     var final = {
-      current: pageSize
+      current: pageSize,
     };
     if (pageSizeIsMax) {
       final.nextUp = pageSize;
@@ -56,5 +58,5 @@ export default Component.extend({
       final.nextDown = pageSize - 10;
     }
     return final;
-  })
+  }),
 });

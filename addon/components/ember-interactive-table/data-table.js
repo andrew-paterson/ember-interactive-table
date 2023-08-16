@@ -3,11 +3,11 @@ import layout from '../../templates/components/ember-interactive-table/data-tabl
 
 export default Component.extend({
   layout,
-  tagName: "",
+  tagName: '',
 
   actions: {
-    selectAll: function(prop, value) {
+    selectAll: function (prop, value) {
       this.model.setEach(prop, value);
-    }
-  }
+    },
+  },
 });

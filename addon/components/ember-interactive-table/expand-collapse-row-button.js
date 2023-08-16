@@ -4,15 +4,17 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   layout,
-  tagName: "",
+  tagName: '',
   dataTestClass: 'eit-expand-collapse-row-button',
 
-  expandCollapseIcon: computed('expanded', function() {
-    var icon = this.expanded ? 'svg-repo/icons/icon-arrow-up' : 'svg-repo/icons/icon-arrow-down';
+  expandCollapseIcon: computed('expanded', function () {
+    var icon = this.expanded
+      ? 'svg-repo/icons/icon-arrow-up'
+      : 'svg-repo/icons/icon-arrow-down';
     return icon;
   }),
 
-  expandCollapseText: computed('showText', 'hideText', function() {
+  expandCollapseText: computed('showText', 'hideText', function () {
     return this.expanded ? this.hideText : this.showText;
   }),
 
@@ -20,5 +22,5 @@ export default Component.extend({
     toggleExpanded() {
       this.toggleExpanded();
     },
-  }
+  },
 });
