@@ -2,7 +2,7 @@ import Service from '@ember/service';
 import _merge from 'lodash/merge';
 import objectFromPath from 'ember-sundries/utils/object-from-path';
 
-export default Service.extend({
+export default class EmberInteractiveTableService extends Service {
   buildQueryParams(params, name) {
     var queryParamsFilters = this.get(name);
     var qpObjects = [];
@@ -24,7 +24,7 @@ export default Service.extend({
       acc = _merge(acc, item);
     });
     return final;
-  },
+  }
 
   getParamValue(params, prop) {
     var propKey = prop.qpKey || prop.key;
@@ -45,9 +45,9 @@ export default Service.extend({
       }
     }
     return prop;
-  },
+  }
 
-  queryParams: {
+  queryParams = {
     page: {
       refreshModel: true,
     },
@@ -60,5 +60,5 @@ export default Service.extend({
     trashed: {
       refreshModel: true,
     },
-  },
-});
+  };
+}
