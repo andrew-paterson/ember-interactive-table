@@ -1,12 +1,13 @@
+import { layout as templateLayout, tagName } from '@ember-decorators/component';
+import { computed } from '@ember/object';
 import Component from '@ember/component';
 import layout from '../../templates/components/ember-interactive-table/pagination-controls';
-import { computed } from '@ember/object';
 
-export default Component.extend({
-  layout,
-  tagName: '',
-
-  paginationObject: computed('paginationLinks', function () {
+@templateLayout(layout)
+@tagName('')
+export default class PaginationControls extends Component {
+  @computed('paginationLinks')
+  get paginationObject() {
     var paginationLinks = this.paginationLinks;
     if (!paginationLinks) {
       return;
@@ -32,9 +33,10 @@ export default Component.extend({
       });
     }
     return paginationObject;
-  }),
+  }
 
-  pageSize: computed('modelMetaData', 'paginationObject', function () {
+  @computed('modelMetaData', 'paginationObject')
+  get pageSize() {
     var pageSize = parseInt(this.paginationObject.size);
     var maxPageSize = this.modelMetaData.max_page_size;
     var minPageSize = this.modelMetaData.min_page_size;
@@ -58,5 +60,5 @@ export default Component.extend({
       final.nextDown = pageSize - 10;
     }
     return final;
-  }),
-});
+  }
+}

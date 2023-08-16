@@ -1,0 +1,57 @@
+2023-08-16T12:16:40.449Z ERROR: [addon/controllers/ember-interactive-table.js]
+	ValidationError: Validation errors for class 'EmberInteractiveTableController':
+		[actions]: Transform not supported - value is of type object. For more details: eslint-plugin-ember/avoid-leaking-state-in-ember-objects
+2023-08-16T12:20:34.233Z ERROR: [addon/controllers/ember-interactive-table.js]
+	ValidationError: Validation errors for class 'EmberInteractiveTableController':
+		[actions]: Transform not supported - value is of type object. For more details: eslint-plugin-ember/avoid-leaking-state-in-ember-objects
+2023-08-16T12:36:44.627Z ERROR: [addon/components/ember-interactive-table/data-table.js]
+	ValidationError: Validation errors for class 'DataTable':
+		[actions]: Transform not supported - value is of type object. For more details: eslint-plugin-ember/avoid-leaking-state-in-ember-objects
+2023-08-16T12:36:44.744Z ERROR: [addon/components/ember-interactive-table/data-table-container.js]
+	ValidationError: Validation errors for class 'DataTableContainer':
+		[actions]: Transform not supported - value is of type object. For more details: eslint-plugin-ember/avoid-leaking-state-in-ember-objects
+2023-08-16T12:36:44.993Z ERROR: [addon/components/ember-interactive-table/data-table-row.js]
+	ValidationError: Validation errors for class 'DataTableRow':
+		[actions]: Transform not supported - value is of type object. For more details: eslint-plugin-ember/avoid-leaking-state-in-ember-objects
+2023-08-16T12:36:45.088Z ERROR: [addon/components/ember-interactive-table/expand-collapse-row-button.js]
+	ValidationError: Validation errors for class 'ExpandCollapseRowButton':
+		[actions]: Transform not supported - [toggleExpanded]: calling the passed action would cause an infinite loop. See https://github.com/scalvert/eslint-plugin-ember-es6-class/pull/2 for more details
+2023-08-16T12:40:15.740Z ERROR: [addon/components/ember-interactive-table/filters-container.js]
+	RuntimeDataError: Could not find runtime data
+2023-08-16T12:40:15.756Z INFO: [addon/components/ember-interactive-table/filters-container.js]
+	UNMODIFIED: Did not find any 'EmberObject.extend()' expressions
+2023-08-16T12:40:16.323Z ERROR: [addon/components/ember-interactive-table/expand-collapse-row-button.js]
+	ValidationError: Validation errors for class 'ExpandCollapseRowButton':
+		[actions]: Transform not supported - [toggleExpanded]: calling the passed action would cause an infinite loop. See https://github.com/scalvert/eslint-plugin-ember-es6-class/pull/2 for more details
+2023-08-16T12:40:16.731Z ERROR: [addon/components/ember-interactive-table/pagination-controls.js]
+	RuntimeDataError: Could not find runtime data
+2023-08-16T12:40:16.788Z INFO: [addon/components/ember-interactive-table/pagination-controls.js]
+	UNMODIFIED: Did not find any 'EmberObject.extend()' expressions
+2023-08-16T12:40:16.918Z ERROR: [addon/components/blank-template.js]
+	RuntimeDataError: Could not find runtime data
+2023-08-16T12:40:16.932Z INFO: [addon/components/blank-template.js]
+	UNMODIFIED: Did not find any 'EmberObject.extend()' expressions
+2023-08-16T12:52:58.887Z ERROR: [addon/components/ember-interactive-table/data-table.js]
+	RuntimeDataError: Could not find runtime data
+2023-08-16T12:52:59.026Z INFO: [addon/components/ember-interactive-table/data-table.js]
+	UNMODIFIED: Did not find any 'EmberObject.extend()' expressions
+2023-08-16T12:53:00.444Z ERROR: [addon/components/blank-template.js]
+	RuntimeDataError: Could not find runtime data
+2023-08-16T12:53:00.510Z INFO: [addon/components/blank-template.js]
+	UNMODIFIED: Did not find any 'EmberObject.extend()' expressions
+2023-08-16T12:53:00.626Z ERROR: [addon/components/ember-interactive-table/pagination-controls.js]
+	RuntimeDataError: Could not find runtime data
+2023-08-16T12:53:00.667Z INFO: [addon/components/ember-interactive-table/pagination-controls.js]
+	UNMODIFIED: Did not find any 'EmberObject.extend()' expressions
+2023-08-16T12:53:00.982Z ERROR: [addon/components/ember-interactive-table/filters-container.js]
+	RuntimeDataError: Could not find runtime data
+2023-08-16T12:53:00.997Z INFO: [addon/components/ember-interactive-table/filters-container.js]
+	UNMODIFIED: Did not find any 'EmberObject.extend()' expressions
+2023-08-16T12:53:01.804Z ERROR: [addon/components/ember-interactive-table/data-table-container.js]
+	RuntimeDataError: Could not find runtime data
+2023-08-16T12:53:01.913Z INFO: [addon/components/ember-interactive-table/data-table-container.js]
+	UNMODIFIED: Did not find any 'EmberObject.extend()' expressions
+2023-08-16T12:53:02.221Z ERROR: [addon/components/ember-interactive-table/data-table-row.js]
+	RuntimeDataError: Could not find runtime data
+2023-08-16T12:53:02.268Z INFO: [addon/components/ember-interactive-table/data-table-row.js]
+	UNMODIFIED: Did not find any 'EmberObject.extend()' expressions

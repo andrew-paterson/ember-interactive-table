@@ -1,13 +1,13 @@
+import { action } from '@ember/object';
+import { layout as templateLayout, tagName } from '@ember-decorators/component';
 import Component from '@ember/component';
 import layout from '../../templates/components/ember-interactive-table/data-table';
 
-export default Component.extend({
-  layout,
-  tagName: '',
-
-  actions: {
-    selectAll: function (prop, value) {
-      this.model.setEach(prop, value);
-    },
-  },
-});
+@templateLayout(layout)
+@tagName('')
+export default class DataTable extends Component {
+  @action
+  selectAll(prop, value) {
+    this.model.setEach(prop, value);
+  }
+}
