@@ -1,5 +1,6 @@
+import { tracked } from '@glimmer/tracking';
 import { layout as templateLayout, tagName } from '@ember-decorators/component';
-import { action, computed } from '@ember/object';
+import { action } from '@ember/object';
 import Component from '@ember/component';
 import layout from '../../templates/components/ember-interactive-table/data-table-container';
 import isEmptyObject from 'ember-interactive-table/utils/is-empty-object';
@@ -7,46 +8,42 @@ import isEmptyObject from 'ember-interactive-table/utils/is-empty-object';
 @tagName('')
 @templateLayout(layout)
 export default class DataTableContainer extends Component {
-  @computed('trashed', 'pageTitle')
+  @tracked trashed;
+  @tracked pageTitle;
+  @tracked model;
+
   get title() {
     return this.trashed ? `${this.pageTitle} | TRASH` : this.pageTitle;
   }
 
-  @computed('model.@each.selected')
   get itemsSelected() {
     return this.model.filter((item) => item.selected === true).length > 0;
   }
 
-  @computed('trashed')
   get deleteRestoreButtonMode() {
     return this.trashed ? 'restore' : 'delete';
   }
 
-  @computed('trashed')
   get deleteRestoreButtonIcon() {
     return this.trashed
       ? 'svg-repo/icons/icon-processing'
       : 'svg-repo/icons/icon-trash';
   }
 
-  @computed('trashed')
   get toggleTrashViewButtonText() {
     return this.trashed ? 'Exit Trash' : 'View Trash';
   }
 
-  @computed('trashed')
   get toggleTrashViewButtonIcon() {
     return this.trashed
       ? 'svg-repo/icons/icon-cross'
       : 'svg-repo/icons/icon-trash';
   }
 
-  @computed('model', 'model.@each')
   get modelMetaData() {
     return this.model.meta;
   }
 
-  @computed('model')
   get paginationLinks() {
     if (isEmptyObject(this.model.links)) {
       return;
@@ -54,7 +51,6 @@ export default class DataTableContainer extends Component {
     return this.model.links;
   }
 
-  @computed('model.meta')
   get filtersActive() {
     return (
       this.model.meta.filtered_data_length < this.model.meta.total_data_length
@@ -64,10 +60,10 @@ export default class DataTableContainer extends Component {
   @action
   didInsert() {
     if (!this.singleRecordName) {
-      this.set('singleRecordName', 'item');
+      this.singleRecordName = 'item';
     }
     if (!this.pluralRecordName) {
-      this.set('pluralRecordName', `${this.singleRecordName}s`);
+      this.pluralRecordName = `${this.singleRecordName}s`;
     }
   }
 
@@ -151,6 +147,6 @@ export default class DataTableContainer extends Component {
         itemsToSelect.setEach('selected', true);
       }
     }
-    this.set('lastSelectedItem', item);
+    this.lastSelectedItem = item;
   }
 }
