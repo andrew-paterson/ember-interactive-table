@@ -1,7 +1,11 @@
 import { action } from '@ember/object';
 import Controller from '@ember/controller';
-
+import { tracked } from '@glimmer/tracking';
 export default class EmberInteractiveTableController extends Controller {
+  @tracked sort;
+  @tracked size;
+  @tracked page;
+
   @action
   applyDefaults() {
     var queryParamsObjects = this.queryParamsObjects || [];
@@ -10,7 +14,7 @@ export default class EmberInteractiveTableController extends Controller {
         if (Array.isArray(qpObject.defaultValue)) {
           qpObject.defaultValue = qpObject.defaultValue.join(',');
         }
-        this.set(qpObject.key, qpObject.defaultValue);
+        this[qpObject.key] = qpObject.defaultValue;
       });
       this.queryParams = (this.queryParams || [])
         .concat(
@@ -33,7 +37,7 @@ export default class EmberInteractiveTableController extends Controller {
       newSortDirection = defaultDirection;
     }
     newSortDirection = newSortDirection.replace('desc', '-').replace('asc', '');
-    this.set('sort', `${newSortDirection}${newSortField}`);
+    this.sort = `${newSortDirection}${newSortField}`;
   }
 
   @action
@@ -57,7 +61,7 @@ export default class EmberInteractiveTableController extends Controller {
         });
       }
       value = (value || []).length === 0 ? null : value;
-      this.set(key, value);
+      this[key] = value;
     }
     setTimeout(() => {
       // TODO undesirable

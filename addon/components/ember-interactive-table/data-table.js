@@ -8,6 +8,8 @@ import layout from '../../templates/components/ember-interactive-table/data-tabl
 export default class DataTable extends Component {
   @action
   selectAll(prop, value) {
-    this.model.setEach(prop, value);
+    this.model.forEach((item) => {
+      item[prop] = value;
+    });
   }
 }

@@ -69,7 +69,9 @@ export default class DataTableContainer extends Component {
 
   @action
   selectAll(prop, value) {
-    this.model.setEach(prop, value);
+    this.model.forEach((item) => {
+      item[prop] = value;
+    });
   }
 
   @action
@@ -81,7 +83,7 @@ export default class DataTableContainer extends Component {
     };
     selectedItems.forEach(function (item) {
       var deleted = mode === 'delete' ? true : false;
-      item.set('deleted', deleted);
+      item.deleted = deleted;
       item
         .toggleDeleted()
         .then(() => {
@@ -144,7 +146,9 @@ export default class DataTableContainer extends Component {
         } else {
           itemsToSelect = items.slice(lastSelectedIndex, selectedIndex);
         }
-        itemsToSelect.setEach('selected', true);
+        itemsToSelect.forEach((item) => {
+          item.selected = true;
+        });
       }
     }
     this.lastSelectedItem = item;

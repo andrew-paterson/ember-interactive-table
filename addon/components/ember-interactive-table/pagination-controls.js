@@ -1,6 +1,5 @@
 import { tracked } from '@glimmer/tracking';
 import { layout as templateLayout, tagName } from '@ember-decorators/component';
-import { computed } from '@ember/object';
 import Component from '@ember/component';
 import layout from '../../templates/components/ember-interactive-table/pagination-controls';
 
