@@ -1,12 +1,8 @@
 import { tracked } from '@glimmer/tracking';
-import { layout as templateLayout, tagName } from '@ember-decorators/component';
 import { action } from '@ember/object';
-import Component from '@ember/component';
-import layout from '../../templates/components/ember-interactive-table/data-table-container';
+import Component from '@glimmer/component';
 import isEmptyObject from 'ember-interactive-table/utils/is-empty-object';
 
-@tagName('')
-@templateLayout(layout)
 export default class DataTableContainer extends Component {
   @tracked trashed;
   @tracked pageTitle;

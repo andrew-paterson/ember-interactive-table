@@ -1,10 +1,6 @@
 import { tracked } from '@glimmer/tracking';
-import { layout as templateLayout, tagName } from '@ember-decorators/component';
-import Component from '@ember/component';
-import layout from '../../templates/components/ember-interactive-table/expand-collapse-row-button';
+import Component from '@glimmer/component';
 
-@templateLayout(layout)
-@tagName('')
 export default class ExpandCollapseRowButton extends Component {
   @tracked expanded;
   @tracked showText;

@@ -1,16 +1,12 @@
 import { tracked } from '@glimmer/tracking';
-import { layout as templateLayout, tagName } from '@ember-decorators/component';
-import Component from '@ember/component';
-import layout from '../../templates/components/ember-interactive-table/pagination-controls';
+import Component from '@glimmer/component';
 
-@templateLayout(layout)
-@tagName('')
 export default class PaginationControls extends Component {
   @tracked paginationLinks;
   @tracked modelMetaData;
 
   get paginationObject() {
-    var paginationLinks = this.paginationLinks;
+    var paginationLinks = this.args.paginationLinks;
     if (!paginationLinks) {
       return;
     }
@@ -39,10 +35,10 @@ export default class PaginationControls extends Component {
 
   get pageSize() {
     var pageSize = parseInt(this.paginationObject.size);
-    var maxPageSize = this.modelMetaData.max_page_size;
-    var minPageSize = this.modelMetaData.min_page_size;
-    var pageSizeIsMax = this.modelMetaData.page_size_is_max;
-    var pageSizeIsMin = this.modelMetaData.page_size_is_min;
+    var maxPageSize = this.args.modelMetaData.max_page_size;
+    var minPageSize = this.args.modelMetaData.min_page_size;
+    var pageSizeIsMax = this.args.modelMetaData.page_size_is_max;
+    var pageSizeIsMin = this.args.modelMetaData.page_size_is_min;
     var final = {
       current: pageSize,
     };

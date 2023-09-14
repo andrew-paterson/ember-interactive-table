@@ -1,10 +1,6 @@
 import { action } from '@ember/object';
-import { layout as templateLayout, tagName } from '@ember-decorators/component';
-import Component from '@ember/component';
-import layout from '../../templates/components/ember-interactive-table/data-table-row';
+import Component from '@glimmer/component';
 
-@templateLayout(layout)
-@tagName('')
 export default class DataTableRow extends Component {
   @action
   didInsert(element) {
@@ -15,7 +11,7 @@ export default class DataTableRow extends Component {
 
   @action
   toggleExpanded() {
-    this.toggleProperty('expanded');
+    this.expanded = !this.expanded; // this.toggleProperty
   }
 
   @action
