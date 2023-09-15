@@ -1,8 +1,4 @@
-<div
-  class="width-100 overflow-x-auto"
-  {{did-insert (action "didInsert")}}
-  ...attributes
->
+<div class="width-100 overflow-x-auto" ...attributes>
   <div class={{concat "above-table" " " @aboveTableClass}}>
     {{#if (or @filtersComponent @filterFormSchema)}}
       <div class="margin-bottom-lg sort-filter">
@@ -53,8 +49,8 @@
                     Filters are active ({{this.modelMetaData.filtered_data_length}}
                     {{ember-skeleton/custom-inflector
                       this.modelMetaData.filtered_data_length
-                      singular=this.singleRecordName
-                      plural=this.pluralRecordName
+                      singular=@singleRecordName
+                      plural=@pluralRecordName
                     }}
                     returned).
                   </div>
@@ -116,7 +112,7 @@
       />
     {{/if}}
   {{else}}
-    {{#ember-sundries/in-page-alert type="info" data-test-id="no-items-notice"}}
+    <EmberSundries::InPageAlert @type="info" data-test-id="no-items-notice">
       {{#if this.filtersActive}}
         Your selected filters don't match any
         {{this.pluralRecordName}}. Please update your filter settings.
@@ -125,6 +121,6 @@
         {{this.pluralRecordName}}
         to display yet.
       {{/if}}
-    {{/ember-sundries/in-page-alert}}
+    </EmberSundries::InPageAlert>
   {{/if}}
 </div>

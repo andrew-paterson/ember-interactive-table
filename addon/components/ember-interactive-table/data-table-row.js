@@ -1,11 +1,13 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-
+import { tracked } from '@glimmer/tracking';
 export default class DataTableRow extends Component {
+  @tracked expanded;
+
   @action
   didInsert(element) {
-    if (this.didInsertDataTableRow) {
-      this.didInsertDataTableRow(element);
+    if (this.args.didInsertDataTableRow) {
+      this.args.didInsertDataTableRow(this, element);
     }
   }
 
@@ -23,12 +25,12 @@ export default class DataTableRow extends Component {
       return;
     }
     item.toggleProperty('selected');
-    if (!this.onSelect) {
+    if (!this.args.onSelect) {
       console.warn(
         'Please pass an action as the onSelect property of data-table-row in order to react to table row selection.'
       );
       return;
     }
-    this.onSelect(value, event, item);
+    this.args.onSelect(value, event, item);
   }
 }

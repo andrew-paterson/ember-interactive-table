@@ -30,7 +30,7 @@
       <div class="flex flex-align-start">
         {{ember-interactive-table/expand-collapse-row-button
           class="margin-right-lg"
-          expanded=@expanded
+          expanded=this.expanded
           toggleExpanded=(action "toggleExpanded")
         }}
         <div class="data-table-row-expanded-content flex-expand">

@@ -9,13 +9,13 @@ export default class ExpandCollapseRowButton extends Component {
   dataTestClass = 'eit-expand-collapse-row-button';
 
   get expandCollapseIcon() {
-    var icon = this.expanded
+    var icon = this.args.expanded
       ? 'svg-repo/icons/icon-arrow-up'
       : 'svg-repo/icons/icon-arrow-down';
     return icon;
   }
 
   get expandCollapseText() {
-    return this.expanded ? this.hideText : this.showText;
+    return this.args.expanded ? this.args.hideText : this.args.showText;
   }
 }

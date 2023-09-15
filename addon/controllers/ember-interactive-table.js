@@ -42,8 +42,8 @@ export default class EmberInteractiveTableController extends Controller {
 
   @action
   clearAllFilters() {
-    this.send('applyDefaults');
-    this.send('refreshModel');
+    this.applyDefaults();
+    this.refreshModel();
   }
 
   @action
@@ -65,7 +65,7 @@ export default class EmberInteractiveTableController extends Controller {
     }
     setTimeout(() => {
       // TODO undesirable
-      this.send('refreshModel');
+      this.refreshModel();
     });
   }
 }
