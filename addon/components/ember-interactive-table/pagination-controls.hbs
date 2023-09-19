@@ -18,7 +18,7 @@
       Page
       <input
         value={{readonly this.paginationObject.self.number}}
-        {{on "change" (action (mut @page) value="target.value")}}
+        {{on "change" (fn (mut @page) value="target.value")}}
       />
       of
       {{this.paginationObject.last.number}}
@@ -58,7 +58,7 @@
       data-test-class="eit-pagination-current-page-size"
     ><input
         value={{readonly this.pageSize.current}}
-        {{on "change" (action (mut @size) value="target.value")}}
+        {{on "change" (fn (mut @size) value="target.value")}}
       /></span>
     items per page
   </div>

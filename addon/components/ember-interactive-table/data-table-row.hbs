@@ -2,19 +2,19 @@
   class="{{ember-interactive-table/odd-or-even @index}}"
   data-test-class="eit-data-table-row"
   data-test-id="{{@dataTestId}}"
-  {{did-insert (action "didInsert")}}
+  {{did-insert this.didInsert}}
 >
   {{#unless @hideExpandCollapse}}
     <td class="expand-collapse-cell">
       {{ember-interactive-table/expand-collapse-row-button
         expanded=this.expanded
-        toggleExpanded=(action "toggleExpanded")
+        toggleExpanded=this.toggleExpanded
       }}
     </td>
   {{/unless}}
   {{#unless @hideSelectRow}}
     <td class="select"><EmberSundries::LabelledCheckbox
-        @changedAction={{fn (action "toggleSelected") @record}}
+        @changedAction={{fn this.toggleSelected @record}}
         @value={{@record.selected}}
       /></td>
   {{/unless}}
@@ -31,14 +31,14 @@
         {{ember-interactive-table/expand-collapse-row-button
           class="margin-right-lg"
           expanded=this.expanded
-          toggleExpanded=(action "toggleExpanded")
+          toggleExpanded=this.toggleExpanded
         }}
         <div class="data-table-row-expanded-content flex-expand">
           {{yield (hash expandedRow=(component "blank-template" tagName=""))}}
         </div>
         <button
           class="btn-content hide-details-icon close-button"
-          {{on "click" (action "toggleExpanded")}}
+          {{on "click" this.toggleExpanded}}
         >
           {{@svg-repo/icons/icon-cross}}
         </button>
