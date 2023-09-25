@@ -43,17 +43,15 @@ export default class DataTableContainer extends Component {
   }
 
   get paginationLinks() {
-    if (isEmptyObject(this.args.model.links)) {
+    if (isEmptyObject(this.args.model.links || {})) {
       return;
     }
     return this.args.model.links;
   }
 
   get filtersActive() {
-    return (
-      this.args.model.meta.filtered_data_length <
-      this.args.model.meta.total_data_length
-    );
+    const meta = this.args.model.meta || {};
+    return meta.filtered_data_length < meta.total_data_length;
   }
 
   get singleRecordName() {
