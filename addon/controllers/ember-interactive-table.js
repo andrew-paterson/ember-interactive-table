@@ -20,7 +20,7 @@ export default class EmberInteractiveTableController extends Controller {
         .concat(
           queryParamsObjects.map((item) => {
             return item.qpKey || item.key;
-          }) || []
+          }) || [],
         )
         .uniq();
     }
@@ -48,7 +48,7 @@ export default class EmberInteractiveTableController extends Controller {
 
   @action
   applyFilters(filterFormValues) {
-    var queryParamsObjects = this.queryParamsObjects.items || [];
+    var queryParamsObjects = this.queryParamsObjects || [];
     for (var key in filterFormValues) {
       var value = filterFormValues[key];
       var thisObject = queryParamsObjects.findBy('key', key) || {};
@@ -56,9 +56,11 @@ export default class EmberInteractiveTableController extends Controller {
         value = value[thisObject.objectKeyPath];
       }
       if (thisObject.arrayObjectKeyPath) {
-        value = (value || []).map((item) => {
-          return item[thisObject.arrayObjectKeyPath];
-        });
+        value = (value || [])
+          .map((item) => {
+            return item[thisObject.arrayObjectKeyPath];
+          })
+          .join(',');
       }
       value = (value || []).length === 0 ? null : value;
       this[key] = value;
