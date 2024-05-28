@@ -112,6 +112,9 @@ devDependencies:
   ember-template-lint:
     specifier: ^5.13.0
     version: 5.13.0
+  ember-test-selectors:
+    specifier: git+ssh://git@github.com/mainmatter/ember-test-selectors.git#cf1ce42fed939bb6a66634cb91dc77dc931b036a
+    version: github.com/mainmatter/ember-test-selectors/cf1ce42fed939bb6a66634cb91dc77dc931b036a
   ember-try:
     specifier: ^3.0.0
     version: 3.0.0
@@ -14464,6 +14467,19 @@ packages:
       minimatch: 3.1.2
       rimraf: 2.7.1
       yui: 3.18.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  github.com/mainmatter/ember-test-selectors/cf1ce42fed939bb6a66634cb91dc77dc931b036a:
+    resolution: {tarball: https://codeload.github.com/mainmatter/ember-test-selectors/tar.gz/cf1ce42fed939bb6a66634cb91dc77dc931b036a}
+    name: ember-test-selectors
+    version: 6.0.0
+    engines: {node: 12.* || 14.* || >= 16.*}
+    dependencies:
+      calculate-cache-key-for-tree: 2.0.0
+      ember-cli-babel: 7.26.11
+      ember-cli-version-checker: 5.1.2
     transitivePeerDependencies:
       - supports-color
     dev: true
