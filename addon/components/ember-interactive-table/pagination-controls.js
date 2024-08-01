@@ -1,9 +1,12 @@
 import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
+import { guidFor } from '@ember/object/internals';
 
 export default class PaginationControls extends Component {
   @tracked paginationLinks;
   @tracked modelMetaData;
+
+  _uid = guidFor(this);
 
   get paginationObject() {
     var paginationLinks = this.args.paginationLinks;

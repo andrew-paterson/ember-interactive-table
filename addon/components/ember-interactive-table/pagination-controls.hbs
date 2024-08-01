@@ -17,6 +17,7 @@
     <div class="page-number-input" data-test-class="eit-pagination-page-number">
       Page
       <input
+        id="eit-page-number-{{this._uid}}"
         value={{readonly this.paginationObject.self.number}}
         {{on "change" (fn (action (mut @page) value="target.value"))}}
       />
@@ -57,6 +58,7 @@
       class="page-size"
       data-test-class="eit-pagination-current-page-size"
     ><input
+        id="eit-page-size-{{this._uid}}"
         value={{readonly this.pageSize.current}}
         {{on "change" (fn (action (mut @size) value="target.value"))}}
       /></span>

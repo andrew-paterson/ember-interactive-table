@@ -17,6 +17,9 @@ dependencies:
   ember-lodash:
     specifier: ^4.19.5
     version: 4.19.5
+  ember-test-selectors:
+    specifier: git+ssh://git@github.com/mainmatter/ember-test-selectors.git#cf1ce42fed939bb6a66634cb91dc77dc931b036a
+    version: github.com/mainmatter/ember-test-selectors/cf1ce42fed939bb6a66634cb91dc77dc931b036a
 
 devDependencies:
   '@babel/eslint-parser':
@@ -112,9 +115,6 @@ devDependencies:
   ember-template-lint:
     specifier: ^5.13.0
     version: 5.13.0
-  ember-test-selectors:
-    specifier: git+ssh://git@github.com/mainmatter/ember-test-selectors.git#cf1ce42fed939bb6a66634cb91dc77dc931b036a
-    version: github.com/mainmatter/ember-test-selectors/cf1ce42fed939bb6a66634cb91dc77dc931b036a
   ember-try:
     specifier: ^3.0.0
     version: 3.0.0
@@ -14482,4 +14482,4 @@ packages:
       ember-cli-version-checker: 5.1.2
     transitivePeerDependencies:
       - supports-color
-    dev: true
+    dev: false
