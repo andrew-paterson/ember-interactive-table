@@ -16,7 +16,7 @@
             {{/each}}
           </div>
         {{/if}}
-        {{#if (gt @model.meta.total_data_length 0)}}
+        {{#if this.showFiltersForm}}
           <BasicDropdown
             @verticalPosition="below"
             @renderInPlace={{true}}

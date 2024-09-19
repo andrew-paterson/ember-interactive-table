@@ -49,9 +49,22 @@ export default class DataTableContainer extends Component {
     return this.args.model.links;
   }
 
+  get filteredDataLength() {
+    return this.modelMetaData.filtered_data_length;
+  }
+
   get filtersActive() {
-    const meta = this.args.model.meta || {};
-    return meta.filtered_data_length < meta.total_data_length;
+    return this.filteredDataLength < this.modelMetaData.total_data_length;
+  }
+
+  get showFiltersForm() {
+    if (
+      this.modelMetaData.total_data_length > 0 &&
+      (this.filtersActive === true || this.filtersActive === false)
+    ) {
+      return true;
+    }
+    return false;
   }
 
   get singleRecordName() {
@@ -72,7 +85,7 @@ export default class DataTableContainer extends Component {
   @action
   deleteOrRestoreSelected(mode) {
     var selectedItems = this.args.model.filter(
-      (item) => item.selected === true
+      (item) => item.selected === true,
     );
     var counter = {
       success: 0,
@@ -89,7 +102,7 @@ export default class DataTableContainer extends Component {
             this.deleteOrRestoreResponseMessage(
               mode,
               counter,
-              selectedItems.length
+              selectedItems.length,
             );
             this.args.refreshModel();
           }
@@ -100,7 +113,7 @@ export default class DataTableContainer extends Component {
             this.deleteOrRestoreResponseMessage(
               mode,
               counter,
-              selectedItems.length
+              selectedItems.length,
             );
             this.args.refreshModel();
           }
