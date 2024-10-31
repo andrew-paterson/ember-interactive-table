@@ -18,8 +18,8 @@ dependencies:
     specifier: ^4.19.5
     version: 4.19.5
   ember-test-selectors:
-    specifier: git+ssh://git@github.com/mainmatter/ember-test-selectors.git#cf1ce42fed939bb6a66634cb91dc77dc931b036a
-    version: github.com/mainmatter/ember-test-selectors/cf1ce42fed939bb6a66634cb91dc77dc931b036a
+    specifier: ^7.0.0
+    version: 7.0.0
 
 devDependencies:
   '@babel/eslint-parser':
@@ -7573,6 +7573,17 @@ packages:
       - supports-color
     dev: true
 
+  /ember-test-selectors@7.0.0:
+    resolution: {integrity: sha512-gGJzzBw6CsBB9gfk9/4qw0+iOSvhlqvUe4jIZKDf4waMkgVLtnPdFUWMocfFvUnJS7IitwKB/iTgIctD4RgH7w==}
+    engines: {node: 18.* || 20.* || >= 22.*}
+    dependencies:
+      calculate-cache-key-for-tree: 2.0.0
+      ember-cli-babel: 7.26.11
+      ember-cli-version-checker: 5.1.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /ember-tether@3.0.0(@babel/core@7.23.7)(ember-source@5.5.0)(webpack@5.89.0):
     resolution: {integrity: sha512-2hrwbxGUuMtX4wnBJ2fYH0nx1utBM5r+g4zd7uvaqlPS3oTmTt96BKB7Xwq4R6jj6Vyxs9E48Fjv+pEAKEObnw==}
     engines: {node: 14.* || 16.* || >= 18}
@@ -14470,16 +14481,3 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
-
-  github.com/mainmatter/ember-test-selectors/cf1ce42fed939bb6a66634cb91dc77dc931b036a:
-    resolution: {tarball: https://codeload.github.com/mainmatter/ember-test-selectors/tar.gz/cf1ce42fed939bb6a66634cb91dc77dc931b036a}
-    name: ember-test-selectors
-    version: 6.0.0
-    engines: {node: 12.* || 14.* || >= 16.*}
-    dependencies:
-      calculate-cache-key-for-tree: 2.0.0
-      ember-cli-babel: 7.26.11
-      ember-cli-version-checker: 5.1.2
-    transitivePeerDependencies:
-      - supports-color
-    dev: false

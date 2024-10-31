@@ -65,6 +65,8 @@ export default class EmberInteractiveTableController extends Controller {
       value = (value || []).length === 0 ? null : value;
       this[key] = value;
     }
+    this.model.meta = {};
+
     setTimeout(() => {
       // TODO undesirable
       this.refreshModel();
