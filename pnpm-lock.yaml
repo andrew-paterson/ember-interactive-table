@@ -20,6 +20,9 @@ dependencies:
   ember-test-selectors:
     specifier: ^7.0.0
     version: 7.0.0
+  flat:
+    specifier: ^5.0.2
+    version: 5.0.2
 
 devDependencies:
   '@babel/eslint-parser':
@@ -8614,6 +8617,11 @@ packages:
       keyv: 4.5.4
       rimraf: 3.0.2
     dev: true
+
+  /flat@5.0.2:
+    resolution: {integrity: sha512-b6suED+5/3rTpUBdG1gupIl8MPFCAMA0QXwmljLhvCUKcUvdE4gWky9zpuGCcXHOsz4J9wPGNWq6OKpmIzz3hQ==}
+    hasBin: true
+    dev: false
 
   /flatted@3.2.9:
     resolution: {integrity: sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ==}

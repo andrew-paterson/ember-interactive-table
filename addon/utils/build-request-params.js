@@ -1,5 +1,5 @@
 import _merge from 'lodash/merge';
-import objectFromPath from 'ember-sundries/utils/object-from-path';
+import { unflatten } from 'flat';
 
 export default function buildRequestParams(queryParams, queryParamsObjects) {
   var qpObjects = [];
@@ -13,7 +13,9 @@ export default function buildRequestParams(queryParams, queryParamsObjects) {
       var path = qpObject.parent
         ? `${qpObject.parent}.${qpObject.key}`
         : qpObject.key;
-      qpObjects.push(objectFromPath(path, qpObject.value));
+      const obj = {};
+      obj[path] = qpObject.value;
+      qpObjects.push(unflatten(obj));
     }
   });
 
