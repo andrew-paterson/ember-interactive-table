@@ -1,4 +1,4 @@
-import _merge from 'lodash/merge';
+import _merge from 'lodash.merge';
 import { unflatten } from 'flat';
 
 export default function buildRequestParams(queryParams, queryParamsObjects) {
