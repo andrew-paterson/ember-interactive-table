@@ -1,11 +1,11 @@
-$expand-collapse-column-outer-width: 40px;
-$id-column-outer-width: 60px;
-
 .filtered-list-container {
   max-width: 100%;
 }
 
 .data-table-wrapper {
+  --expand-collapse-column-outer-width: 40px;
+  --id-column-outer-width: 60px;
+  --sortable-icon-background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.86 69.95" class="icon-sortable" fill="%23fff"><polygon points="16.43 0 32.86 28.46 0 28.46 16.43 0"/><polygon points="16.43 69.95 32.86 41.49 0 41.49 16.43 69.95"/></svg>');
   overflow-x: auto;
   padding-left: 1px;
 }
@@ -14,10 +14,6 @@ table.data-table {
   margin: 0 0 0px -1px;
   > tbody > tr.odd > td {
     background: #eee;
-  }
-
-  > tbody > tr.update-success > td {
-    background-color: lighten($success-background-color, 30%);
   }
 
   > tbody > tr > td,
@@ -33,13 +29,12 @@ table.data-table {
       padding-right: 5px;
     }
   }
-  $sortable-icon-background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.86 69.95" class="icon-sortable" fill="%23fff"><polygon points="16.43 0 32.86 28.46 0 28.46 16.43 0"/><polygon points="16.43 69.95 32.86 41.49 0 41.49 16.43 69.95"/></svg>') !default;
 
   > thead > tr > th {
-    padding-top: $spacer-lg;
-    padding-bottom: $spacer-lg;
-    background-color: darken($gray-light, 20%);
-    border-color: darken($gray-light, 35%);
+    padding-top: var(--spacer-lg);
+    padding-bottom: var(--spacer-lg);
+    background-color: darken(var(--gray-light, 20%));
+    border-color: darken(var(--gray-light, 35%));
     color: #fff;
     &.icon-header {
       line-height: 0;
@@ -53,7 +48,7 @@ table.data-table {
       }
     }
     &.sortable {
-      background-image: $sortable-icon-background;
+      background-image: var(--sortable-icon-background);
       background-repeat: no-repeat;
       background-position: right 6px center;
       background-size: auto 14px;
@@ -61,7 +56,7 @@ table.data-table {
     }
     &.sortable:hover {
       cursor: pointer;
-      background-color: darken($gray-light, 20%);
+      background-color: var(--gray-light-dark);
     }
     svg {
       fill: #fff;
@@ -77,7 +72,7 @@ table.data-table {
       }
       .time {
         font-size: 0.9em;
-        color: $gray-medium;
+        color: var(--gray-medium);
       }
     }
 
@@ -87,16 +82,16 @@ table.data-table {
 
     &.additional-info-icon {
       vertical-align: top;
-      padding: $spacer-lg $spacer-md $spacer-md;
+      padding: var(--spacer-lg) var(--$spacer-md) var(--$spacer-md);
       width: 30px;
       text-align: center;
     }
 
     &.additional-info-icon {
-      fill: $primary;
+      fill: var(--primary);
       border-right-width: 0;
       svg {
-        width: $spacer-lg;
+        width: var(--spacer-lg);
       }
     }
 
@@ -111,8 +106,8 @@ table.data-table {
     }
 
     &.data-cell-icon svg {
-      margin-right: $spacer-md;
-      height: $spacer-lg * 1.25;
+      margin-right: var(--spacer-md);
+      height: var(--spacer-lg * 1.25);
       padding: 0;
       display: inline-block;
       width: 20px;
@@ -123,7 +118,7 @@ table.data-table {
   .expand-collapse-button {
     color: #999;
     font-size: 1em;
-    font-family: $main-font-family;
+    font-family: var(--main-font-family);
     font-weight: 700;
     svg {
       width: 24px;

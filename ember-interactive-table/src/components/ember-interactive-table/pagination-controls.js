@@ -1,6 +1,7 @@
 import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
 import { guidFor } from '@ember/object/internals';
+import './pagination-controls.css';
 
 export default class PaginationControls extends Component {
   @tracked paginationLinks;
