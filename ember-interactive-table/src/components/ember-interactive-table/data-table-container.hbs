@@ -73,14 +73,13 @@
                       data-test-id="filters-form"
                     />
                   {{else}}
-                    {{component
-                      @filtersComponent
-                      applyFilters=@applyFilters
-                      clearAllFilters=@clearAllFilters
-                      afterFieldEdit=@filterFieldChanged
-                      data=@filterProps
-                      filterFormSchema=@filterFormSchema
-                    }}
+                    <@filtersComponent
+                      @applyFilters={{@applyFilters}}
+                      @clearAllFilters={{@clearAllFilters}}
+                      @afterFieldEdit={{@filterFieldChanged}}
+                      @data={{@filterProps}}
+                      @filterFormSchema={{@filterFormSchema}}
+                    />
                   {{/if}}
                 </div>
               </Dropdown.Content>

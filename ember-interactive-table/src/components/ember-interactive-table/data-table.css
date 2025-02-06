@@ -1,73 +1,135 @@
-.eit-top-pagination {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.filtered-list-container {
+  max-width: 100%;
 }
 
-div.table-pagination {
-  display: flex;
-  align-items: center;
+.data-table-wrapper {
+  --expand-collapse-column-outer-width: 40px;
+  --id-column-outer-width: 60px;
+  --sortable-icon-background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.86 69.95" class="icon-sortable" fill="%23fff"><polygon points="16.43 0 32.86 28.46 0 28.46 16.43 0"/><polygon points="16.43 69.95 32.86 41.49 0 41.49 16.43 69.95"/></svg>');
+  overflow-x: auto;
+  padding-left: 1px;
 }
-div.table-pagination input {
-  width: 50px;
-  height: 30px;
-  display: inline;
-  border-width: 1px;
+
+table.data-table {
+  margin: 0 0 0px -1px;
+}
+table.data-table > tbody > tr.odd > td {
+  background: #eee;
+}
+table.data-table > tbody > tr > td,
+table.data-table > thead > tr > th {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+table.data-table > tbody > tr > td div,
+table.data-table > thead > tr > th div {
+  white-space: normal !important;
+}
+table.data-table > tbody > tr > td.thin,
+table.data-table > thead > tr > th.thin {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+table.data-table > thead > tr > th.icon-header {
+  line-height: 0;
   text-align: center;
-  text-indent: 0;
 }
-div.table-pagination div.page-navigation {
-  margin-right: 64px;
+table.data-table > thead > tr > th.icon-header svg {
+  margin: 0;
+  height: 30px;
+  padding: 0;
+  width: auto;
+  fill: #fff;
 }
-div.table-pagination div.page-navigation input {
-  float: none;
+table.data-table > thead > tr > th.sortable {
+  background-image: var(--sortable-icon-background);
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  background-size: auto 14px;
+  padding-right: 24px;
 }
-div.table-pagination div.page-navigation div.page-number-input {
-  float: left;
-  padding: 0 4px;
-}
-div.table-pagination svg {
-  fill: #bbb;
+table.data-table > thead > tr > th.sortable:hover {
   cursor: pointer;
+  background-color: var(--gray-light-dark);
 }
-div.table-pagination .incrementing-arrow:hover svg {
-  fill: var(--primary);
+table.data-table > thead > tr > th svg {
+  fill: #fff;
 }
-div.table-pagination div.page-navigation {
-  display: flex;
+table.data-table > tbody > tr > td {
+  line-height: 140%;
+  background: #fff;
+  box-sizing: border-box;
 }
-div.table-pagination div.page-navigation .incrementing-arrow:last-child {
-  margin: 0 0 0 5px;
+table.data-table > tbody > tr > td.date-time div {
+  line-height: 120%;
 }
-div.table-pagination .incrementing-arrow.left-right svg {
-  height: 30px;
-  width: 12px;
+table.data-table > tbody > tr > td.date-time .time {
+  font-size: 0.9em;
+  color: var(--gray-medium);
 }
-div.table-pagination .incrementing-arrow-double.left-right svg {
-  height: 30px;
-  width: 21px;
+table.data-table > tbody > tr > td tr.additional-info.collapsed {
+  display: none;
 }
-div.table-pagination div.page-size span.page-size {
-  font-weight: 700;
-  margin-right: 5px;
-}
-div.table-pagination div.page-size {
-  display: flex;
-  height: 26px;
-  align-items: center;
-}
-div.table-pagination div.page-size div.arrows {
-  display: flex;
-  flex-direction: column;
-}
-div.table-pagination div.page-size .incrementing-arrow.up-down {
-  height: 13px;
+table.data-table > tbody > tr > td.additional-info-icon {
+  vertical-align: top;
+  padding: var(--spacer-lg) var(--spacer-md) var(--spacer-md);
   width: 30px;
+  text-align: center;
 }
-div.table-pagination div.page-size .incrementing-arrow.up-down svg {
+table.data-table > tbody > tr > td.additional-info-icon {
+  fill: var(--primary);
+  border-right-width: 0;
+}
+table.data-table > tbody > tr > td.additional-info-icon svg {
+  width: var(--spacer-lg);
+}
+table.data-table > tbody > tr > td.additional-info-content {
+  border-left-width: 0;
+  line-height: 180%;
+}
+table.data-table > tbody > tr > td.data-cell-icon {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+table.data-table > tbody > tr > td.data-cell-icon svg {
+  margin-right: var(--spacer-md);
+  height: calc(var(--spacer-lg) * 1.25);
+  padding: 0;
+  display: inline-block;
   width: 20px;
-  height: 13px;
+  margin-bottom: -3px;
 }
-div.table-pagination div.page-size div.arrows .incrementing-arrow:first-child {
-  margin-bottom: 5px;
+table.data-table .expand-collapse-button {
+  color: #999;
+  font-size: 1em;
+  font-family: var(--main-font-family);
+  font-weight: 700;
+}
+table.data-table .expand-collapse-button svg {
+  width: 24px;
+  height: 10px;
+  fill: #999;
+}
+table.data-table .expand-collapse-button svg.margin-right {
+  margin-right: 8px;
+}
+table.data-table .expand-collapse-button:hover {
+  color: #222;
+}
+table.data-table .expand-collapse-button:hover svg {
+  fill: #222;
+}
+
+.viewing-trashed-items h1 {
+  color: #999;
+}
+
+.viewing-trashed-items .data-table th {
+  background: #999;
+  border-color: #666;
+}
+.viewing-trashed-items .data-table td {
+  background: #eee;
 }
