@@ -101,7 +101,7 @@
         <EmberInteractiveTable::PaginationControls
           @modelMetaData={{this.modelMetaData}}
           @paginationLinks={{this.paginationLinks}}
-          @page={{@page}}
+          @page={{mut @page}}
           @size={{@size}}
           class="margin-bottom-lg"
         />
@@ -121,7 +121,7 @@
       <EmberInteractiveTable::PaginationControls
         @modelMetaData={{this.modelMetaData}}
         @paginationLinks={{this.paginationLinks}}
-        @page={{@page}}
+        @page={{mut @page}}
         @size={{@size}}
         class="margin-top-lg"
       />

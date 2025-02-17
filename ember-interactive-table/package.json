@@ -65,6 +65,7 @@
       "./components/ember-interactive-table/pagination-controls.js": "./dist/_app_/components/ember-interactive-table/pagination-controls.js",
       "./components/svg/arrow-down.js": "./dist/_app_/components/svg/arrow-down.js",
       "./components/svg/arrow-up.js": "./dist/_app_/components/svg/arrow-up.js",
+      "./helpers/ember-interactive-table/extract.js": "./dist/_app_/helpers/ember-interactive-table/extract.js",
       "./helpers/ember-interactive-table/odd-or-even.js": "./dist/_app_/helpers/ember-interactive-table/odd-or-even.js",
       "./services/ember-interactive-table.js": "./dist/_app_/services/ember-interactive-table.js"
     },
