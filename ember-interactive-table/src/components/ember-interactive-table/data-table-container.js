@@ -1,7 +1,7 @@
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import isEmptyObject from '../../utils/is-empty-object';
+import isEmptyObject from '../../utils/is-empty-object.js';
 
 export default class DataTableContainer extends Component {
   @tracked trashed;
