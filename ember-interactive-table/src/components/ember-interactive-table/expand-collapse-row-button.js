@@ -9,8 +9,6 @@ export default class ExpandCollapseRowButton extends Component {
   @tracked showText;
   @tracked hideText;
 
-  dataTestClass = 'eit-expand-collapse-row-button';
-
   get expandCollapseIcon() {
     var icon = this.args.expanded
       ? ensureSafeComponent(IconArrowUpComponent)
