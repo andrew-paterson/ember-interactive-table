@@ -11,10 +11,14 @@ export default class EmberInteractiveTableController extends Controller {
     var queryParamsObjects = this.queryParamsObjects || [];
     if (queryParamsObjects) {
       queryParamsObjects.forEach((qpObject) => {
+        if (!qpObject.defaultValue) {
+          return;
+        }
         if (Array.isArray(qpObject.defaultValue)) {
           qpObject.defaultValue = qpObject.defaultValue.join(',');
         }
-        this[qpObject.key] = qpObject.defaultValue;
+        const propName = qpObject.qpKey || qpObject.key;
+        this[propName] = qpObject.defaultValue;
       });
       this.queryParams = [
         ...new Set(
