@@ -10,9 +10,7 @@ export default function buildRequestParams(queryParams, queryParamsObjects) {
       qpObject.customTransforms(qpObject, queryParams);
     }
     if (qpObject.value) {
-      var path = qpObject.parent
-        ? `${qpObject.parent}.${qpObject.key}`
-        : qpObject.key;
+      const path = qpObject.requestParamsPath || qpObject.paramName;
       const obj = {};
       obj[path] = qpObject.value;
       qpObjects.push(unflatten(obj));
@@ -28,22 +26,13 @@ export default function buildRequestParams(queryParams, queryParamsObjects) {
 }
 
 function setQpObjectValue(queryParams, qpObject) {
-  var propKey = qpObject.qpKey || qpObject.key;
-  if (queryParams[propKey]) {
-    qpObject.value = queryParams[propKey];
+  if (queryParams[qpObject.paramName]) {
+    qpObject.value = queryParams[qpObject.paramName];
   } else {
     return qpObject;
   }
-  if (qpObject.type === 'array') {
-    if (typeof qpObject.value === 'string') {
-      qpObject.value = qpObject.value.split(',');
-    }
-    if (qpObject.filtersForm) {
-      qpObject.filtersForm.options = qpObject.filtersForm.options || [];
-      if (qpObject.value.length === qpObject.filtersForm.options.length) {
-        qpObject.value = null;
-      }
-    }
+  if (qpObject.eitSetQpValueFunc) {
+    qpObject.value = qpObject.eitSetQpValueFunc(qpObject);
   }
   return qpObject;
 }
