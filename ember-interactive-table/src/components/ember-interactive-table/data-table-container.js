@@ -39,12 +39,12 @@ export default class DataTableContainer extends Component {
   }
 
   get modelMetaData() {
-    return this.args.model.meta;
+    return this.args.model?.meta;
   }
 
   get paginationLinks() {
-    if (isEmptyObject(this.args.model.links || {})) {
-      return;
+    if (isEmptyObject(this.args.model?.links || {})) {
+      return null;
     }
     return this.args.model.links;
   }
