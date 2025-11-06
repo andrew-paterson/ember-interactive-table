@@ -12,13 +12,11 @@ export default class PaginationControls extends Component {
 
   @action
   updatePage(event) {
-    console.log(event.target.value);
     this.args.page = event.target.value;
   }
 
   @action
   updateSize(event) {
-    console.log(event.target.value);
     this.args.size = event.target.value;
   }
 
