@@ -52,7 +52,7 @@ table.data-table > thead > tr > th.sortable {
 }
 table.data-table > thead > tr > th.sortable:hover {
   cursor: pointer;
-  background-color: var(--gray-light-dark);
+  background-color: var(--sortable-table-header-hover-bg);
 }
 table.data-table > thead > tr > th svg {
   fill: #fff;
