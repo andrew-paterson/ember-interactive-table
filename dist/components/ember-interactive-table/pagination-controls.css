@@ -1,0 +1,73 @@
+.eit-top-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+div.table-pagination {
+  display: flex;
+  align-items: center;
+}
+div.table-pagination input {
+  width: 50px;
+  height: 30px;
+  display: inline;
+  border-width: 1px;
+  text-align: center;
+  text-indent: 0;
+}
+div.table-pagination div.page-navigation {
+  margin-right: 64px;
+}
+div.table-pagination div.page-navigation input {
+  float: none;
+}
+div.table-pagination div.page-navigation div.page-number-input {
+  float: left;
+  padding: 0 4px;
+}
+div.table-pagination svg {
+  fill: #bbb;
+  cursor: pointer;
+}
+div.table-pagination .incrementing-arrow:hover svg {
+  fill: var(--primary);
+}
+div.table-pagination div.page-navigation {
+  display: flex;
+}
+div.table-pagination div.page-navigation .incrementing-arrow:last-child {
+  margin: 0 0 0 5px;
+}
+div.table-pagination .incrementing-arrow.left-right svg {
+  height: 30px;
+  width: 12px;
+}
+div.table-pagination .incrementing-arrow-double.left-right svg {
+  height: 30px;
+  width: 21px;
+}
+div.table-pagination div.page-size span.page-size {
+  font-weight: 700;
+  margin-right: 5px;
+}
+div.table-pagination div.page-size {
+  display: flex;
+  height: 26px;
+  align-items: center;
+}
+div.table-pagination div.page-size div.arrows {
+  display: flex;
+  flex-direction: column;
+}
+div.table-pagination div.page-size .incrementing-arrow.up-down {
+  height: 13px;
+  width: 30px;
+}
+div.table-pagination div.page-size .incrementing-arrow.up-down svg {
+  width: 20px;
+  height: 13px;
+}
+div.table-pagination div.page-size div.arrows .incrementing-arrow:first-child {
+  margin-bottom: 5px;
+}

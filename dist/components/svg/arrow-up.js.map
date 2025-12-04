@@ -1,0 +1,1 @@
+{"version":3,"file":"arrow-up.js","sources":["../../../src/components/svg/arrow-up.js"],"sourcesContent":["import Component from '@glimmer/component';\n\nexport default class IconArrowUp extends Component {}\n"],"names":["IconArrowUp","Component","setComponentTemplate","TEMPLATE"],"mappings":";;;;;;AAEe,MAAMA,WAAW,SAASC,SAAS,CAAC;AAAEC,oBAAA,CAAAC,QAAA,EAAhCH,WAAW,CAAA;;;;"}
