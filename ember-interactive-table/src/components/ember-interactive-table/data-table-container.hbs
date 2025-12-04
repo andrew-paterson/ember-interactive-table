@@ -1,53 +1,23 @@
 <div class="width-100 overflow-x-auto" ...attributes>
-  {{!-- <div class="above-table {{@aboveTableClass}}">
-    <div class="above-table-row-1 {{@aboveTableRow1Class}}"> --}}
-  {{!-- {{#if (or @filtersComponent @filterFormSchema)}}
-        <div class="sort-filter">
-          {{#if @sortParams.sortProps}}
-            <div class="sorting-controls flex margin-bottom-lg">
-              <h3 class="margin-right-lg">Sort by: </h3>
-              {{#each @sortParams.sortProps as |propName|}}
-                <button
-                  type="button"
-                  {{on
-                    "click"
-                    (fn
-                      @setSortParams propName (or @defaultSortDirection "asc")
-                    )
-                  }}
-                  class="margin-right-lg btn btn-outline-gray-medium"
-                >{{propName}}</button>
-              {{/each}}
-            </div>
-          {{/if}}
-        </div>
-      {{/if}} --}}
   {{yield
     this.filtersActive
     this.modelMetaData.filtered_data_length
     this.modelMetaData.total_data_length
     to="aboveTable"
   }}
-  {{! </div> }}
-  {{!-- <div
-      id="above-table-row-2"
-      class="above-table-row-2 {{@aboveTableRow2Class}}"
-    ></div> --}}
-
-  {{! </div> }}
+  <div class="eit-top-pagination">
+    {{#if (and @model this.paginationLinks)}}
+      <EmberInteractiveTable::PaginationControls
+        @modelMetaData={{this.modelMetaData}}
+        @paginationLinks={{this.paginationLinks}}
+        @page={{mut @page}}
+        @size={{@size}}
+        class="margin-bottom-lg"
+      />
+    {{/if}}
+    {{yield to="afterTopPagination"}}
+  </div>
   {{#if @model}}
-    <div class="eit-top-pagination">
-      {{#if this.paginationLinks}}
-        <EmberInteractiveTable::PaginationControls
-          @modelMetaData={{this.modelMetaData}}
-          @paginationLinks={{this.paginationLinks}}
-          @page={{mut @page}}
-          @size={{@size}}
-          class="margin-bottom-lg"
-        />
-      {{/if}}
-      {{yield to="afterTopPagination"}}
-    </div>
     <div
       class="data-table-wrapper
         {{if @trashed 'viewing-trashed-items'}}
@@ -57,15 +27,6 @@
         {{yield to="tableComponent"}}
       </div>
     </div>
-    {{#if this.paginationLinks}}
-      <EmberInteractiveTable::PaginationControls
-        @modelMetaData={{this.modelMetaData}}
-        @paginationLinks={{this.paginationLinks}}
-        @page={{mut @page}}
-        @size={{@size}}
-        class="margin-top-lg"
-      />
-    {{/if}}
   {{else}}
     <EmberSundries::InPageAlert @type="info" data-test-id="no-items-notice">
       {{#if this.filtersActive}}
@@ -78,4 +39,14 @@
       {{/if}}
     </EmberSundries::InPageAlert>
   {{/if}}
+  {{#if (and @model this.paginationLinks)}}
+    <EmberInteractiveTable::PaginationControls
+      @modelMetaData={{this.modelMetaData}}
+      @paginationLinks={{this.paginationLinks}}
+      @page={{mut @page}}
+      @size={{@size}}
+      class="margin-top-lg"
+    />
+  {{/if}}
+
 </div>
